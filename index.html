@@ -202,6 +202,28 @@ p{max-width:60ch}
 .offer .btn{justify-self:end}
 @media (max-width:980px){.prices-head{grid-template-columns:1fr}.plan{grid-template-columns:1fr}.plan .price{order:-1;text-align:left;align-items:flex-start}.offer{grid-template-columns:1fr}.offer .btn{justify-self:start}}
 
+/* tiers */
+.tier{--c:10px;display:inline-flex;gap:4px;margin-top:28px;background:var(--paper-3);padding:4px}
+.tier label{position:relative}
+.tier input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+.tier span{display:inline-flex;align-items:center;min-height:48px;padding:0 24px;font-family:var(--display);font-weight:800;font-size:17px;transition:background-color .2s var(--ease),color .2s var(--ease)}
+.tier label:hover span{background:var(--paper-2)}
+.tier input:checked + span{background:var(--ink);color:var(--paper)}
+.tier input[value=pro]:checked + span{background:var(--lume);color:var(--ink)}
+.tier input:focus-visible + span{box-shadow:inset 0 0 0 3px var(--lume-press)}
+.prices .pro{display:none}
+.prices:has(input[value=pro]:checked) .pro{display:revert}
+.prices:has(input[value=pro]:checked) .std{display:none}
+.prices:has(input[value=pro]:checked) .plan{background:var(--night);color:var(--on-night)}
+.prices:has(input[value=pro]:checked) .plan:hover{background:var(--night-2)}
+.prices:has(input[value=pro]:checked) .plan li::before{background:var(--lume)}
+.prices:has(input[value=pro]:checked) .plan .price b{color:var(--lume)}
+.prices:has(input[value=pro]:checked) .plan .price span{color:var(--on-night-soft)}
+.prices:has(input[value=pro]:checked) .plan.main{background:var(--lume);color:var(--ink)}
+.prices:has(input[value=pro]:checked) .plan.main li::before{background:var(--ink)}
+.prices:has(input[value=pro]:checked) .plan.main .price b{color:var(--ink)}
+.prices:has(input[value=pro]:checked) .plan.main .price span{color:var(--ink-soft)}
+
 /* process */
 .process{padding-block:var(--gap-section)}
 .process-grid{display:grid;grid-template-columns:4fr 8fr;gap:clamp(36px,5vw,96px);align-items:start;margin-top:clamp(36px,4vw,64px)}
@@ -414,54 +436,73 @@ p{max-width:60ch}
 
     <section id="prices" class="wrap prices" aria-labelledby="prices-title">
       <div class="prices-head">
-        <h2 id="prices-title" class="reveal">Цены и что в них входит</h2>
-        <p class="reveal" style="--d:80ms">Цены фиксированные, всё, что входит, написано ниже. Рекламный бюджет вы платите площадкам напрямую, мы его не касаемся.</p>
+        <div>
+          <h2 id="prices-title" class="reveal">Цены и что в них входит</h2>
+          <div class="tier cut reveal" style="--d:60ms" role="radiogroup" aria-label="Уровень услуг">
+            <label><input type="radio" name="tier" value="std" checked><span>Стандарт</span></label>
+            <label><input type="radio" name="tier" value="pro"><span>Премиум</span></label>
+          </div>
+        </div>
+        <p class="reveal" style="--d:80ms"><span class="std">Стандарт — быстрый запуск по проверенной схеме для вашей ниши.</span><span class="pro">Премиум — индивидуальный дизайн, больше автоматизации и личное внимание каждую неделю.</span> Рекламный бюджет вы платите площадкам напрямую.</p>
       </div>
       <ul class="plans">
         <li class="plan main cut reveal">
-          <div><h3>Визитка</h3><p class="what">Сайт за 7 дней и порядок в картах</p></div>
+          <div><h3>Визитка<span class="pro"> Премиум</span></h3><p class="what"><span class="std">Сайт за 7 дней и порядок в картах</span><span class="pro">Сайт уровня бренда, а не шаблон</span></p></div>
           <ul>
             <li>Сайт-визитка под вашу нишу, удобный с телефона</li>
             <li>Тексты по вашим услугам и отзывам</li>
             <li>Запись в WhatsApp в два касания</li>
             <li>Карточки 2ГИС и Google: фото, услуги, цены, часы, ссылка на сайт</li>
-            <li>Счётчик: видно, сколько заявок пришло с сайта</li>
-            <li>Домен и сайт оформлены на вас</li>
+            <li>Счётчик заявок, домен и сайт оформлены на вас</li>
+            <li class="pro">Индивидуальный дизайн и анимации, как на этой странице</li>
+            <li class="pro">Иллюстрации в вашем стиле и вторая языковая версия</li>
+            <li class="pro">Настройка под поиск Google и 2ГИС</li>
+            <li class="pro">3 месяца правок без доплат</li>
           </ul>
-          <div class="price"><b>200 000 ₸</b><span>разово</span></div>
+          <div class="price"><b class="std">350 000 ₸</b><b class="pro">650 000 ₸</b><span>разово</span></div>
         </li>
         <li class="plan cut reveal">
-          <div><h3>Автозапись</h3><p class="what">Запись, напоминания и учёт без администратора</p></div>
+          <div><h3>Автозапись<span class="pro"> Премиум</span></h3><p class="what"><span class="std">Запись и напоминания без администратора</span><span class="pro">Клиенты возвращаются сами</span></p></div>
           <ul>
             <li>Онлайн-запись на свободное время</li>
             <li>Напоминание клиенту накануне визита</li>
-            <li>Все заявки в одной таблице или CRM</li>
+            <li class="std">Все заявки в одной таблице</li>
+            <li class="pro">CRM с карточками клиентов и историей визитов</li>
+            <li class="pro">Приглашение на повторный визит через месяц</li>
+            <li class="pro">Онлайн-предоплата, чтобы не было неявок</li>
+            <li class="pro">Отчёт по загрузке мастеров раз в месяц</li>
             <li>Подписку сервиса записи, если он нужен, оплачиваете отдельно</li>
           </ul>
-          <div class="price"><b>от 150 000 ₸</b><span>и 25 000 ₸ в месяц за поддержку</span></div>
+          <div class="price"><b class="std">от 250 000 ₸</b><b class="pro">от 450 000 ₸</b><span><span class="std">и 40 000 ₸ в месяц за поддержку</span><span class="pro">и 70 000 ₸ в месяц за поддержку</span></span></div>
         </li>
         <li class="plan cut reveal">
-          <div><h3>Реклама</h3><p class="what">Чтобы на сайт шли новые клиенты</p></div>
+          <div><h3>Реклама<span class="pro"> Премиум</span></h3><p class="what"><span class="std">Чтобы на сайт шли новые клиенты</span><span class="pro">Поток заявок под ключ</span></p></div>
           <ul>
             <li>Instagram, 2ГИС и Google</li>
-            <li>Тексты и картинки объявлений</li>
+            <li class="std">Тексты и картинки объявлений</li>
+            <li class="pro">Креативы и видео уже включены</li>
+            <li class="pro">Тесты объявлений и оптимизация каждый день</li>
+            <li class="pro">Созвон каждую неделю</li>
             <li>Отчёт каждую неделю: сколько заявок и почём каждая</li>
             <li>Нужен сайт: наша визитка или ваш</li>
           </ul>
-          <div class="price"><b>180 000 ₸</b><span>в месяц, плюс рекламный бюджет</span></div>
+          <div class="price"><b class="std">250 000 ₸</b><b class="pro">450 000 ₸</b><span>в месяц, плюс рекламный бюджет</span></div>
         </li>
         <li class="plan cut reveal">
-          <div><h3>Креативы</h3><p class="what">Для тех, кто ведёт рекламу сам</p></div>
+          <div><h3>Креативы<span class="pro"> Премиум</span></h3><p class="what"><span class="std">Для тех, кто ведёт рекламу сам</span><span class="pro">Свой контент-отдел без найма</span></p></div>
           <ul>
-            <li>8 баннеров под Instagram и 2ГИС</li>
-            <li>2 сценария коротких видео: снимаете на телефон по шагам</li>
-            <li>Правки до запуска</li>
+            <li class="std">8 баннеров под Instagram и 2ГИС</li>
+            <li class="std">2 сценария коротких видео: снимаете на телефон по шагам</li>
+            <li class="std">Правки до запуска</li>
+            <li class="pro">16 баннеров под Instagram и 2ГИС</li>
+            <li class="pro">4 видео под ключ: сценарий и монтаж</li>
+            <li class="pro">Правки весь месяц</li>
           </ul>
-          <div class="price"><b>120 000 ₸</b><span>в месяц</span></div>
+          <div class="price"><b class="std">180 000 ₸</b><b class="pro">350 000 ₸</b><span>в месяц</span></div>
         </li>
       </ul>
       <div class="offer cut reveal">
-        <p>Первые три клиента получают «Визитку» за 140 000 ₸ в обмен на честный отзыв и разрешение показать работу.</p>
+        <p>Первые три клиента получают «Визитку» за 250 000 ₸ в обмен на честный отзыв и разрешение показать работу.</p>
         <a class="btn btn-ink wa" data-text="Здравствуйте! Хочу «Визитку» по цене для первых клиентов. Моя компания в 2ГИС: " href="https://wa.me/" target="_blank" rel="noopener">Занять место</a>
       </div>
     </section>
