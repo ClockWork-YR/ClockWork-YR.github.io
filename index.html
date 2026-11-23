@@ -1,0 +1,670 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Clockwork — сайты-визитки и автоматизация записи</title>
+<meta name="description" content="Clockwork делает сайты-визитки с онлайн-записью и автоматизацией для сервисов, клиник и салонов. Сначала бесплатное демо.">
+<meta property="og:title" content="Clockwork — записывает, пока вы спите">
+<meta property="og:description" content="Сайт-визитка с онлайн-записью и напоминаниями. Демо за 1–2 дня бесплатно.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0B0F0D">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22#0B0F0D%22/%3E%3Cg transform=%22translate(8 8) scale(.84)%22%3E%3Cpath d=%22M42.62,10.18 L44.92,3.27 L55.08,3.27 L57.38,10.18 L60.48,10.88 L63.52,11.82 L68.97,7.00 L77.76,12.07 L76.30,19.20 L78.64,21.36 L80.80,23.70 L87.93,22.24 L93.00,31.03 L88.18,36.48 L89.12,39.52 L89.82,42.62 L96.73,44.92 L96.73,55.08 L89.82,57.38 L89.12,60.48 L88.18,63.52 L93.00,68.97 L87.93,77.76 L80.80,76.30 L78.64,78.64 L76.30,80.80 L77.76,87.93 L68.97,93.00 L63.52,88.18 L60.48,89.12 L57.38,89.82 L55.08,96.73 L44.92,96.73 L42.62,89.82 L39.52,89.12 L36.48,88.18 L31.03,93.00 L22.24,87.93 L23.70,80.80 L21.36,78.64 L19.20,76.30 L12.07,77.76 L7.00,68.97 L11.82,63.52 L10.88,60.48 L10.18,57.38 L3.27,55.08 L3.27,44.92 L10.18,42.62 L10.88,39.52 L11.82,36.48 L7.00,31.03 L12.07,22.24 L19.20,23.70 L21.36,21.36 L23.70,19.20 L22.24,12.07 L31.03,7.00 L36.48,11.82 L39.52,10.88 Z%22 fill=%22#C8FF2E%22/%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2232.6%22 fill=%22#0B0F0D%22/%3E%3Crect x=%2247.3%22 y=%2220.5%22 width=%225.4%22 height=%227%22 fill=%22#ECEFE9%22/%3E%3Cpolyline points=%2237.15,41.33 50,50 68.58,33.27%22 fill=%22none%22 stroke=%22#ECEFE9%22 stroke-width=%228%22 stroke-linecap=%22square%22 stroke-linejoin=%22miter%22/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tektur:wght@700;800;900&family=Geologica:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --night:#0B0F0D;
+  --night-2:#121916;
+  --night-3:#1B2420;
+  --night-4:#26322C;
+  --paper:#ECEFE9;
+  --paper-2:#DFE4DB;
+  --paper-3:#D2D9CD;
+  --ink:#0B0F0D;
+  --ink-soft:#4A544E;
+  --on-night:#EEF3EF;
+  --on-night-soft:#A3B1A8;
+  --lume:#C8FF2E;
+  --lume-press:#B5EE12;
+  --display:"Tektur","Geologica",system-ui,sans-serif;
+  --text:"Geologica",system-ui,sans-serif;
+  --margin:clamp(16px,3.2vw,48px);
+  --gap-section:clamp(112px,13vw,220px);
+  --size-display:clamp(38px,5.6vw,94px);
+  --size-h2:clamp(32px,4.6vw,72px);
+  --size-h3:clamp(24px,2.3vw,36px);
+  --size-lead:clamp(18px,1.45vw,22px);
+  --size-body:clamp(16px,1.1vw,18px);
+  --size-small:15px;
+  --c:12px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--night);color:var(--on-night);font-family:var(--text);font-size:var(--size-body);line-height:1.55}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input{font:inherit}
+:focus-visible{outline:3px solid var(--lume);outline-offset:3px}
+::selection{background:var(--lume);color:var(--ink)}
+.wrap{padding-inline:var(--margin);max-width:1560px;margin-inline:auto}
+h1,h2,h3{font-family:var(--display);font-weight:900;letter-spacing:-.02em;line-height:.98;text-wrap:balance}
+h2{font-size:var(--size-h2)}
+h3{font-size:var(--size-h3);font-weight:800;letter-spacing:-.01em;line-height:1.05}
+p{max-width:60ch}
+.cut{clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%,0 var(--c))}
+.paper{background:var(--paper);color:var(--ink)}
+
+/* buttons: chamfered, one fill */
+.btn{--c:12px;display:inline-flex;align-items:center;justify-content:center;gap:.6em;min-height:58px;padding:0 30px;font-family:var(--display);font-weight:800;font-size:17px;letter-spacing:.01em;line-height:1;text-decoration:none;border:0;cursor:pointer;clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%,0 var(--c));transition:transform .18s var(--ease),background-color .18s var(--ease)}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible{outline:0;box-shadow:inset 0 0 0 3px var(--ink)}
+.btn-lume{background:var(--lume);color:var(--ink)}
+.btn-lume:hover{background:var(--lume-press)}
+.btn-ghost{background:var(--night-3);color:var(--on-night)}
+.btn-ghost:hover{background:var(--night-4)}
+.btn-ghost:focus-visible{box-shadow:inset 0 0 0 3px var(--lume)}
+.btn-ink{background:var(--ink);color:var(--paper)}
+.btn-ink:hover{background:#26302B}
+.btn-ink:focus-visible{box-shadow:inset 0 0 0 3px var(--lume)}
+.btn svg{width:22px;height:22px;flex:none}
+
+/* logo */
+.logo{display:inline-flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--display);font-weight:900;font-size:clamp(20px,1.7vw,25px);letter-spacing:-.01em;line-height:1}
+.logo svg{width:clamp(32px,2.6vw,40px);height:clamp(32px,2.6vw,40px);flex:none;transition:transform .6s var(--ease)}
+.logo:hover svg{transform:rotate(30deg)}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:20px}
+.nav-links{display:flex;gap:32px;list-style:none;font-weight:500;font-size:16px}
+.nav-links a{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:6px;text-decoration-color:transparent;transition:text-decoration-color .2s var(--ease)}
+.nav-links a:hover{text-decoration-color:var(--lume)}
+.nav .btn{min-height:46px;padding:0 20px;font-size:15px;--c:9px}
+@media (max-width:960px){.nav-links{display:none}}
+@media (max-width:420px){.nav .btn span{display:none}.nav .btn{padding:0 14px}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,4vw,72px);align-items:center;padding-block:clamp(24px,4vw,64px) clamp(56px,7vw,112px)}
+.hero h1{font-size:var(--size-display);white-space:nowrap}
+.hero .lead{margin-top:clamp(26px,2.4vw,40px);font-size:var(--size-lead);line-height:1.45;max-width:36ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:clamp(28px,3vw,44px)}
+.hero-note{margin-top:18px;font-size:var(--size-small);color:var(--on-night-soft)}
+.dial{position:relative;justify-self:end;width:100%;max-width:580px}
+.watch{display:block;width:100%;height:auto}
+.watch .gear{transform-origin:200px 200px;animation:spin 120s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.hand{transform-origin:200px 200px;transition:transform 1.8s var(--ease)}
+.hand.tick{transition:transform .25s cubic-bezier(.4,2.2,.4,1)}
+.hand.still{transition:none}
+.feed{position:absolute;left:-16%;bottom:-6%;width:min(330px,72%);list-style:none;display:grid;gap:8px}
+.note{--c:10px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:baseline;background:var(--paper);color:var(--ink);padding:14px 18px;transition:opacity .5s var(--ease),transform .5s var(--ease)}
+.note b{font-family:var(--display);font-weight:900;font-size:20px;letter-spacing:-.01em;line-height:1}
+.note strong{display:block;font-weight:700;font-size:15px;line-height:1.3}
+.note span{font-size:14px;line-height:1.35;color:var(--ink-soft)}
+.note.enter{opacity:0;transform:translateY(-14px)}
+.note:nth-child(2){background:#D9DED4}
+.note:nth-child(3){background:#C8CEC3}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr}
+  .dial{justify-self:center;max-width:460px;margin-top:8px}
+  .feed{position:static;width:100%;margin-top:20px}
+}
+
+/* night story */
+.story{padding-block:var(--gap-section)}
+.story-head{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,4vw,72px);align-items:end}
+.story-head p{font-size:var(--size-lead);line-height:1.45}
+.timeline{list-style:none;margin-top:clamp(44px,5vw,80px);display:grid;gap:10px}
+.moment{--c:16px;display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:clamp(16px,3vw,56px);align-items:center;background:var(--paper-2);padding:clamp(20px,2.4vw,36px) clamp(22px,3vw,48px)}
+.moment time{font-family:var(--display);font-weight:900;font-size:clamp(44px,6.4vw,104px);letter-spacing:-.03em;line-height:.9}
+.moment p{font-size:var(--size-lead);line-height:1.4;font-weight:500}
+.moment p span{display:block;margin-top:6px;font-size:var(--size-body);font-weight:400;color:var(--ink-soft)}
+.moment.done{background:var(--lume)}
+.moment.done p span{color:var(--ink)}
+@media (max-width:860px){.story-head{grid-template-columns:1fr}.moment{grid-template-columns:1fr;gap:8px}}
+
+/* live demo */
+.demo{padding-block:var(--gap-section)}
+.demo-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(36px,5vw,96px);align-items:start;margin-top:clamp(36px,4vw,64px)}
+.demo .intro{font-size:var(--size-lead);line-height:1.45}
+.demo .intro + p{margin-top:20px;color:var(--on-night-soft)}
+.sheet{--c:20px;background:var(--night-2);padding:clamp(22px,3vw,44px)}
+.field{border:0;margin-bottom:28px}
+.field legend,.field .lbl{display:block;font-weight:700;font-size:17px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer;margin:0}
+.chip span{--c:8px;display:inline-flex;align-items:center;min-height:48px;padding:0 20px;background:var(--night-3);color:var(--on-night);font-weight:500;font-size:16px;clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%,0 var(--c));transition:background-color .15s var(--ease),transform .15s var(--ease),color .15s var(--ease)}
+.chip:hover span{background:var(--night-4)}
+.chip input:checked + span{background:var(--lume);color:var(--ink);font-weight:700}
+.chip input:focus-visible + span{box-shadow:inset 0 0 0 3px var(--paper)}
+.chip input:active + span{transform:scale(.95)}
+.text-input{--c:10px;width:100%;min-height:56px;padding:0 20px;border:0;background:var(--night-3);color:var(--on-night);font-size:17px;font-weight:500}
+.text-input::placeholder{color:#A9B9AF}
+.text-input:focus-visible{outline:0;box-shadow:inset 0 0 0 3px var(--lume)}
+.phone{--c:16px;margin-top:6px;background:#060908;padding:18px 18px 20px}
+.phone-head{display:flex;align-items:center;gap:12px;font-size:15px;color:var(--on-night-soft)}
+.phone-head b{color:var(--on-night);font-weight:700;font-size:16px}
+.avatar{width:36px;height:36px;border-radius:50%;background:var(--lume);color:var(--ink);display:grid;place-items:center;font-family:var(--display);font-weight:900;font-size:15px;flex:none}
+.bubble{margin-top:16px;margin-left:auto;max-width:88%;background:#22442F;color:#F2F7F3;border-radius:18px 18px 4px 18px;padding:14px 16px 10px;font-size:17px;line-height:1.45;white-space:pre-line}
+.bubble.bump{animation:bump .35s var(--ease)}
+@keyframes bump{0%{transform:scale(.98)}60%{transform:scale(1.01)}100%{transform:scale(1)}}
+.bubble small{display:block;text-align:right;font-size:13px;color:#A6CDB5;margin-top:6px}
+.sheet .btn{margin-top:24px;width:100%}
+@media (max-width:980px){.demo-grid{grid-template-columns:1fr}}
+
+/* niches */
+.niches{padding-top:var(--gap-section)}
+.niches-head{display:grid;grid-template-columns:8fr 4fr;gap:clamp(28px,4vw,72px);align-items:end}
+.niches-head p{font-size:var(--size-lead);line-height:1.45}
+.niche-grid{margin-top:clamp(44px,5vw,80px);display:grid;grid-template-columns:5fr 7fr;gap:clamp(16px,2vw,28px)}
+.niche-grid figure{overflow:hidden}
+.niche-grid figure img{width:100%;object-fit:cover;transition:transform .8s var(--ease)}
+.niche-grid figure:hover img{transform:scale(1.03)}
+.niche-grid .tall{grid-row:span 2}
+.niche-grid .tall img{aspect-ratio:4/5.6}
+.niche-grid .wide img{aspect-ratio:16/9}
+.niche-grid figcaption{padding-top:14px}
+.niche-grid figcaption b{display:block;font-family:var(--display);font-size:var(--size-h3);font-weight:800;letter-spacing:-.01em;line-height:1.05;margin-bottom:6px}
+.niche-pair{display:grid;grid-template-columns:1fr 1fr;gap:clamp(16px,2vw,28px)}
+.niche-pair .salon img{aspect-ratio:4/5;object-position:50% 40%}
+.other{--c:16px;background:var(--night);color:var(--on-night);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(20px,2.4vw,36px)}
+.other b{font-family:var(--display);font-size:var(--size-h3);font-weight:800;line-height:1.05}
+.other p{margin-top:10px;color:var(--on-night-soft)}
+.other a{margin-top:18px;align-self:flex-start;color:var(--lume);font-weight:700;text-underline-offset:5px}
+@media (max-width:900px){.niches-head{grid-template-columns:1fr}.niche-grid{grid-template-columns:1fr}.niche-grid .tall{grid-row:auto}.niche-grid .tall img{aspect-ratio:4/4.4}}
+@media (max-width:560px){.niche-pair{grid-template-columns:1fr}}
+
+/* prices */
+.prices{padding-block:var(--gap-section)}
+.prices-head{display:grid;grid-template-columns:7fr 5fr;gap:clamp(28px,4vw,72px);align-items:end}
+.prices-head p{font-size:var(--size-lead);line-height:1.45}
+.plans{list-style:none;margin-top:clamp(44px,5vw,80px);display:grid;gap:10px}
+.plan{--c:18px;display:grid;grid-template-columns:4fr 5fr 3fr;gap:clamp(20px,3vw,56px);background:var(--paper-2);padding:clamp(24px,3vw,48px);transition:background-color .2s var(--ease)}
+.plan:hover{background:var(--paper-3)}
+.plan h3{font-size:clamp(32px,3.4vw,54px);font-weight:900;letter-spacing:-.02em}
+.plan .what{margin-top:12px;font-size:var(--size-lead);line-height:1.35;max-width:22ch}
+.plan ul{list-style:none;display:grid;gap:10px;align-content:start}
+.plan li{padding-left:26px;position:relative}
+.plan li::before{content:"";position:absolute;left:0;top:.42em;width:11px;height:11px;background:var(--ink);clip-path:polygon(0 50%,50% 0,100% 50%,50% 100%)}
+.plan .price{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:6px}
+.plan .price b{font-family:var(--display);font-size:clamp(32px,3.2vw,52px);font-weight:900;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.plan .price span{font-size:var(--size-small);color:var(--ink-soft);max-width:18ch}
+.plan.main{background:var(--night);color:var(--on-night)}
+.plan.main:hover{background:var(--night-2)}
+.plan.main li::before{background:var(--lume)}
+.plan.main .price b{color:var(--lume)}
+.plan.main .price span{color:var(--on-night-soft)}
+.offer{--c:18px;margin-top:10px;background:var(--lume);color:var(--ink);padding:clamp(24px,3vw,48px);display:grid;grid-template-columns:8fr 4fr;gap:24px;align-items:center}
+.offer p{font-family:var(--display);font-size:clamp(20px,2vw,30px);line-height:1.3;font-weight:800;max-width:36ch}
+.offer .btn{justify-self:end}
+@media (max-width:980px){.prices-head{grid-template-columns:1fr}.plan{grid-template-columns:1fr}.plan .price{order:-1;text-align:left;align-items:flex-start}.offer{grid-template-columns:1fr}.offer .btn{justify-self:start}}
+
+/* process */
+.process{padding-block:var(--gap-section)}
+.process-grid{display:grid;grid-template-columns:4fr 8fr;gap:clamp(36px,5vw,96px);align-items:start;margin-top:clamp(36px,4vw,64px)}
+.process .side{font-size:var(--size-lead);line-height:1.45;color:var(--on-night-soft);max-width:26ch}
+.steps{list-style:none;display:grid;gap:clamp(36px,4vw,56px)}
+.step{display:grid;grid-template-columns:6fr 7fr;gap:clamp(16px,3vw,48px);align-items:baseline}
+.step .when{font-family:var(--display);font-size:clamp(30px,3vw,46px);font-weight:900;letter-spacing:-.02em;line-height:1;color:var(--lume)}
+.step p{font-size:var(--size-lead);line-height:1.45}
+.step p span{display:block;margin-top:8px;font-size:var(--size-body);color:var(--on-night-soft)}
+@media (max-width:980px){.process-grid{grid-template-columns:1fr}.step{grid-template-columns:1fr}}
+
+/* about */
+.about{padding-block:var(--gap-section);display:grid;grid-template-columns:6fr 6fr;gap:clamp(36px,5vw,96px);align-items:start}
+.about-text .lead{margin-top:30px;font-size:var(--size-lead);line-height:1.45}
+.about-text p + p{margin-top:18px}
+.facts{list-style:none;display:grid;gap:10px;margin-top:clamp(36px,4vw,56px)}
+.facts li{--c:14px;display:grid;grid-template-columns:minmax(7.4ch,max-content) 1fr;gap:24px;align-items:baseline;background:var(--paper-2);padding:22px 26px}
+.facts b{font-family:var(--display);font-size:clamp(32px,3.4vw,54px);font-weight:900;letter-spacing:-.02em;line-height:1;white-space:nowrap}
+.about-figure img{width:100%;aspect-ratio:3/2.4;object-fit:cover}
+.about-figure figcaption{margin-top:12px;font-size:var(--size-small);color:var(--ink-soft)}
+@media (max-width:980px){.about{grid-template-columns:1fr}}
+@media (max-width:420px){.facts li{grid-template-columns:1fr;gap:6px}}
+
+/* faq */
+.faq{padding-bottom:var(--gap-section);display:grid;grid-template-columns:4fr 8fr;gap:clamp(36px,5vw,96px);align-items:start}
+.faq-list{display:grid;gap:10px}
+.faq details{--c:14px;background:var(--paper-2);transition:background-color .2s var(--ease)}
+.faq details:hover,.faq details[open]{background:var(--paper-3)}
+.faq summary{list-style:none;cursor:pointer;padding:24px 64px 24px 28px;position:relative;font-weight:700;font-size:clamp(19px,1.6vw,24px);letter-spacing:-.01em;line-height:1.32}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";position:absolute;right:26px;top:50%;width:22px;height:22px;margin-top:-11px;background:var(--ink);clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);transition:transform .3s var(--ease),background-color .2s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg);background:var(--lume-press)}
+.faq summary:focus-visible{outline:0;box-shadow:inset 0 0 0 3px var(--ink)}
+.faq details p{padding:0 28px 26px;max-width:62ch}
+@media (max-width:980px){.faq{grid-template-columns:1fr}}
+
+/* final call: lume field */
+.final{background:var(--lume);color:var(--ink);padding-block:clamp(88px,11vw,180px)}
+.final-grid{display:grid;grid-template-columns:8fr 4fr;gap:clamp(28px,4vw,72px);align-items:end}
+.final h2{font-size:clamp(36px,5.2vw,86px)}
+.final p{margin-top:28px;font-size:var(--size-lead);max-width:34ch;font-weight:500}
+.final .btn{min-height:70px;font-size:19px;padding:0 36px;--c:14px}
+@media (max-width:900px){.final-grid{grid-template-columns:1fr}.final .btn{justify-self:start}}
+
+/* footer */
+.foot{padding-block:clamp(56px,6vw,96px) 28px}
+.foot-logo{display:flex;align-items:center;gap:clamp(12px,1.6vw,28px);font-family:var(--display);font-weight:900;font-size:clamp(46px,12.6vw,218px);letter-spacing:-.03em;line-height:.9}
+.foot-logo svg{width:.86em;height:.86em;flex:none}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;margin-top:36px;font-size:var(--size-small);color:var(--on-night-soft)}
+.foot-row p{max-width:80ch}
+.foot-row a{color:var(--on-night-soft)}
+
+/* motion */
+.js .reveal{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0ms)}
+.js .reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal{opacity:1;transform:none;transition:none}
+  .watch .gear,.bubble.bump{animation:none}
+  .hand,.note{transition:none!important}
+  .logo:hover svg{transform:none}
+}
+</style>
+</head>
+<body data-wa="">
+<!-- Номер WhatsApp впишите в data-wa выше, только цифры: например 77011234567. Все кнопки подхватят его сами. -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="mark" viewBox="0 0 100 100"><path d="M42.62,10.18 L44.92,3.27 L55.08,3.27 L57.38,10.18 L60.48,10.88 L63.52,11.82 L68.97,7.00 L77.76,12.07 L76.30,19.20 L78.64,21.36 L80.80,23.70 L87.93,22.24 L93.00,31.03 L88.18,36.48 L89.12,39.52 L89.82,42.62 L96.73,44.92 L96.73,55.08 L89.82,57.38 L89.12,60.48 L88.18,63.52 L93.00,68.97 L87.93,77.76 L80.80,76.30 L78.64,78.64 L76.30,80.80 L77.76,87.93 L68.97,93.00 L63.52,88.18 L60.48,89.12 L57.38,89.82 L55.08,96.73 L44.92,96.73 L42.62,89.82 L39.52,89.12 L36.48,88.18 L31.03,93.00 L22.24,87.93 L23.70,80.80 L21.36,78.64 L19.20,76.30 L12.07,77.76 L7.00,68.97 L11.82,63.52 L10.88,60.48 L10.18,57.38 L3.27,55.08 L3.27,44.92 L10.18,42.62 L10.88,39.52 L11.82,36.48 L7.00,31.03 L12.07,22.24 L19.20,23.70 L21.36,21.36 L23.70,19.20 L22.24,12.07 L31.03,7.00 L36.48,11.82 L39.52,10.88 Z" fill="#C8FF2E"/><circle cx="50" cy="50" r="32.6" fill="#0B0F0D"/><rect x="47.3" y="20.5" width="5.4" height="7" fill="#ECEFE9"/><polyline points="37.15,41.33 50,50 68.58,33.27" fill="none" stroke="#ECEFE9" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter"/></symbol>
+</svg>
+
+<header class="wrap nav">
+  <a class="logo" href="#top" aria-label="Clockwork, наверх"><svg aria-hidden="true"><use href="#mark"/></svg>Clockwork</a>
+  <ul class="nav-links">
+    <li><a href="#night">Как это работает</a></li>
+    <li><a href="#demo">Демо записи</a></li>
+    <li><a href="#prices">Цены</a></li>
+    <li><a href="#faq">Вопросы</a></li>
+  </ul>
+  <a class="btn btn-lume wa" data-text="Здравствуйте! Хочу обсудить сайт с записью для своего бизнеса." href="https://wa.me/" target="_blank" rel="noopener">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3Z"/></svg>
+    <span>WhatsApp</span>
+  </a>
+</header>
+
+<main id="top">
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <div>
+      <h1 id="hero-title" class="reveal">Записывает,<br>пока вы спите.</h1>
+      <p class="lead reveal" style="--d:90ms">Clockwork делает сайты-визитки с онлайн-записью для сервисов, клиник и салонов. Клиент записывается сам, вам приходит заявка в WhatsApp, ему приходит напоминание.</p>
+      <div class="hero-actions reveal" style="--d:180ms">
+        <a class="btn btn-lume wa" data-text="Здравствуйте! Хочу бесплатное демо сайта с записью. Моя компания в 2ГИС: " href="https://wa.me/" target="_blank" rel="noopener">Получить демо бесплатно</a>
+        <a class="btn btn-ghost" href="#prices">Цены</a>
+      </div>
+      <p class="hero-note reveal" style="--d:240ms">Демо за 1–2 дня. Не понравится — ничего не платите.</p>
+    </div>
+    <div class="dial reveal" style="--d:120ms">
+      <svg class="watch" viewBox="0 0 400 400" role="img" aria-label="Часы Clockwork: стрелки показывают ваше время">
+        <path class="gear" d="M184.14,18.69 L189.29,2.29 L210.71,2.29 L215.86,18.69 L223.76,19.56 L231.60,20.76 L240.83,6.26 L261.51,11.80 L262.25,28.98 L269.65,31.85 L276.92,35.05 L289.58,23.42 L308.13,34.13 L304.39,50.91 L310.79,55.61 L316.99,60.58 L332.23,52.63 L347.37,67.77 L339.42,83.01 L344.39,89.21 L349.09,95.61 L365.87,91.87 L376.58,110.42 L364.95,123.08 L368.15,130.35 L371.02,137.75 L388.20,138.49 L393.74,159.17 L379.24,168.40 L380.44,176.24 L381.31,184.14 L397.71,189.29 L397.71,210.71 L381.31,215.86 L380.44,223.76 L379.24,231.60 L393.74,240.83 L388.20,261.51 L371.02,262.25 L368.15,269.65 L364.95,276.92 L376.58,289.58 L365.87,308.13 L349.09,304.39 L344.39,310.79 L339.42,316.99 L347.37,332.23 L332.23,347.37 L316.99,339.42 L310.79,344.39 L304.39,349.09 L308.13,365.87 L289.58,376.58 L276.92,364.95 L269.65,368.15 L262.25,371.02 L261.51,388.20 L240.83,393.74 L231.60,379.24 L223.76,380.44 L215.86,381.31 L210.71,397.71 L189.29,397.71 L184.14,381.31 L176.24,380.44 L168.40,379.24 L159.17,393.74 L138.49,388.20 L137.75,371.02 L130.35,368.15 L123.08,364.95 L110.42,376.58 L91.87,365.87 L95.61,349.09 L89.21,344.39 L83.01,339.42 L67.77,347.37 L52.63,332.23 L60.58,316.99 L55.61,310.79 L50.91,304.39 L34.13,308.13 L23.42,289.58 L35.05,276.92 L31.85,269.65 L28.98,262.25 L11.80,261.51 L6.26,240.83 L20.76,231.60 L19.56,223.76 L18.69,215.86 L2.29,210.71 L2.29,189.29 L18.69,184.14 L19.56,176.24 L20.76,168.40 L6.26,159.17 L11.80,138.49 L28.98,137.75 L31.85,130.35 L35.05,123.08 L23.42,110.42 L34.13,91.87 L50.91,95.61 L55.61,89.21 L60.58,83.01 L52.63,67.77 L67.77,52.63 L83.01,60.58 L89.21,55.61 L95.61,50.91 L91.87,34.13 L110.42,23.42 L123.08,35.05 L130.35,31.85 L137.75,28.98 L138.49,11.80 L159.17,6.26 L168.40,20.76 L176.24,19.56 Z" fill="#C8FF2E"/>
+        <circle cx="200" cy="200" r="168" fill="#121916"/>
+        <g stroke="#55645B" stroke-width="2"><line x1="215.7" y1="50.8" x2="216.5" y2="42.9"/><line x1="231.2" y1="53.3" x2="232.9" y2="45.5"/><line x1="246.4" y1="57.3" x2="248.8" y2="49.7"/><line x1="261.0" y1="63.0" x2="264.3" y2="55.7"/><line x1="288.2" y1="78.6" x2="292.9" y2="72.2"/><line x1="300.4" y1="88.5" x2="305.7" y2="82.6"/><line x1="311.5" y1="99.6" x2="317.4" y2="94.3"/><line x1="321.4" y1="111.8" x2="327.8" y2="107.1"/><line x1="337.0" y1="139.0" x2="344.3" y2="135.7"/><line x1="342.7" y1="153.6" x2="350.3" y2="151.2"/><line x1="346.7" y1="168.8" x2="354.5" y2="167.1"/><line x1="349.2" y1="184.3" x2="357.1" y2="183.5"/><line x1="349.2" y1="215.7" x2="357.1" y2="216.5"/><line x1="346.7" y1="231.2" x2="354.5" y2="232.9"/><line x1="342.7" y1="246.4" x2="350.3" y2="248.8"/><line x1="337.0" y1="261.0" x2="344.3" y2="264.3"/><line x1="321.4" y1="288.2" x2="327.8" y2="292.9"/><line x1="311.5" y1="300.4" x2="317.4" y2="305.7"/><line x1="300.4" y1="311.5" x2="305.7" y2="317.4"/><line x1="288.2" y1="321.4" x2="292.9" y2="327.8"/><line x1="261.0" y1="337.0" x2="264.3" y2="344.3"/><line x1="246.4" y1="342.7" x2="248.8" y2="350.3"/><line x1="231.2" y1="346.7" x2="232.9" y2="354.5"/><line x1="215.7" y1="349.2" x2="216.5" y2="357.1"/><line x1="184.3" y1="349.2" x2="183.5" y2="357.1"/><line x1="168.8" y1="346.7" x2="167.1" y2="354.5"/><line x1="153.6" y1="342.7" x2="151.2" y2="350.3"/><line x1="139.0" y1="337.0" x2="135.7" y2="344.3"/><line x1="111.8" y1="321.4" x2="107.1" y2="327.8"/><line x1="99.6" y1="311.5" x2="94.3" y2="317.4"/><line x1="88.5" y1="300.4" x2="82.6" y2="305.7"/><line x1="78.6" y1="288.2" x2="72.2" y2="292.9"/><line x1="63.0" y1="261.0" x2="55.7" y2="264.3"/><line x1="57.3" y1="246.4" x2="49.7" y2="248.8"/><line x1="53.3" y1="231.2" x2="45.5" y2="232.9"/><line x1="50.8" y1="215.7" x2="42.9" y2="216.5"/><line x1="50.8" y1="184.3" x2="42.9" y2="183.5"/><line x1="53.3" y1="168.8" x2="45.5" y2="167.1"/><line x1="57.3" y1="153.6" x2="49.7" y2="151.2"/><line x1="63.0" y1="139.0" x2="55.7" y2="135.7"/><line x1="78.6" y1="111.8" x2="72.2" y2="107.1"/><line x1="88.5" y1="99.6" x2="82.6" y2="94.3"/><line x1="99.6" y1="88.5" x2="94.3" y2="82.6"/><line x1="111.8" y1="78.6" x2="107.1" y2="72.2"/><line x1="139.0" y1="63.0" x2="135.7" y2="55.7"/><line x1="153.6" y1="57.3" x2="151.2" y2="49.7"/><line x1="168.8" y1="53.3" x2="167.1" y2="45.5"/><line x1="184.3" y1="50.8" x2="183.5" y2="42.9"/></g>
+        <g stroke="#ECEFE9" stroke-width="6"><line x1="267.0" y1="84.0" x2="279.0" y2="63.2"/><line x1="316.0" y1="133.0" x2="336.8" y2="121.0"/><line x1="334.0" y1="200.0" x2="358.0" y2="200.0"/><line x1="316.0" y1="267.0" x2="336.8" y2="279.0"/><line x1="267.0" y1="316.0" x2="279.0" y2="336.8"/><line x1="200.0" y1="334.0" x2="200.0" y2="358.0"/><line x1="133.0" y1="316.0" x2="121.0" y2="336.8"/><line x1="84.0" y1="267.0" x2="63.2" y2="279.0"/><line x1="66.0" y1="200.0" x2="42.0" y2="200.0"/><line x1="84.0" y1="133.0" x2="63.2" y2="121.0"/><line x1="133.0" y1="84.0" x2="121.0" y2="63.2"/></g>
+        <rect x="190" y="40" width="20" height="28" fill="#C8FF2E"/>
+        <g class="hand still" id="hand-h"><line x1="200" y1="200" x2="200" y2="124" stroke="#ECEFE9" stroke-width="18" stroke-linecap="square"/></g>
+        <g class="hand still" id="hand-m"><line x1="200" y1="200" x2="200" y2="80" stroke="#ECEFE9" stroke-width="13" stroke-linecap="square"/></g>
+        <g class="hand still" id="hand-s"><line x1="200" y1="228" x2="200" y2="58" stroke="#C8FF2E" stroke-width="3.5"/></g>
+        <circle cx="200" cy="200" r="11" fill="#C8FF2E"/><circle cx="200" cy="200" r="4" fill="#0B0F0D"/>
+      </svg>
+      <ol class="feed" id="feed" aria-label="Пример уведомлений о записях" data-ui>
+        <li class="note cut"><b>03:14</b><div><strong>Новая запись</strong><span>Маникюр, завтра в 11:00</span></div></li>
+        <li class="note cut"><b>23:48</b><div><strong>Заявка с сайта</strong><span>Диагностика, суббота утром</span></div></li>
+        <li class="note cut"><b>22:05</b><div><strong>Новая запись</strong><span>Чистка зубов, четверг в 18:30</span></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="night" class="paper story" aria-labelledby="night-title">
+    <div class="wrap">
+      <div class="story-head">
+        <h2 id="night-title" class="reveal">Пока вы спали</h2>
+        <p class="reveal" style="--d:80ms">Одна ночь салона, у которого есть Clockwork. Это пример, но работает ровно так: без администратора и без звонков.</p>
+      </div>
+      <ol class="timeline">
+        <li class="moment cut reveal"><time>23:40</time><p>Клиентка нашла ваш салон в 2ГИС и открыла сайт.<span>Цены, работы мастеров и отзывы на одной странице.</span></p></li>
+        <li class="moment cut reveal"><time>23:42</time><p>Записалась на маникюр на завтра, 11:00.<span>Вам в WhatsApp пришла готовая заявка: услуга, время, имя.</span></p></li>
+        <li class="moment cut reveal"><time>08:30</time><p>Вы проснулись и ответили «Ждём».<span>Одно сообщение вместо пяти и пропущенного звонка.</span></p></li>
+        <li class="moment cut reveal"><time>10:00</time><p>Ей пришло напоминание о визите.<span>Само, по расписанию. Меньше неявок.</span></p></li>
+        <li class="moment cut reveal done"><time>11:00</time><p>Она пришла.<span>Ни одного звонка, ни одной потерянной заявки.</span></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <section id="demo" class="demo" aria-labelledby="demo-title">
+    <div class="wrap">
+      <h2 id="demo-title" class="reveal">Так к вам запишется клиент</h2>
+    </div>
+    <div class="wrap demo-grid">
+      <div>
+        <p class="intro reveal" style="--d:80ms">Клиент выбирает услугу и время, вам в WhatsApp приходит готовая заявка. Без вопросов «а сколько стоит?» в директе.</p>
+        <p class="reveal" style="--d:140ms">Попробуйте на своём бизнесе: впишите название и пощёлкайте. Такая запись будет на вашем сайте.</p>
+      </div>
+      <form class="sheet cut reveal" style="--d:120ms" id="try" action="https://wa.me/" method="get" target="_blank">
+        <fieldset class="field">
+          <legend>Ваш бизнес</legend>
+          <div class="chips" role="radiogroup">
+            <label class="chip"><input type="radio" name="niche" value="auto" checked><span>Автосервис</span></label>
+            <label class="chip"><input type="radio" name="niche" value="dent"><span>Стоматология</span></label>
+            <label class="chip"><input type="radio" name="niche" value="beauty"><span>Салон красоты</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label class="lbl" for="biz">Название</label>
+          <input class="text-input cut" id="biz" name="biz" type="text" placeholder="Как в 2ГИС" autocomplete="organization" maxlength="40">
+        </div>
+        <fieldset class="field">
+          <legend>Услуга</legend>
+          <div class="chips" id="services">
+            <label class="chip"><input type="radio" name="service" value="компьютерная диагностика" checked><span>Диагностика</span></label>
+            <label class="chip"><input type="radio" name="service" value="ремонт ходовой"><span>Ходовая</span></label>
+            <label class="chip"><input type="radio" name="service" value="замена масла"><span>Замена масла</span></label>
+            <label class="chip"><input type="radio" name="service" value="ремонт коробки передач"><span>Коробка</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Когда удобно</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="when" value="сегодня" checked><span>Сегодня</span></label>
+            <label class="chip"><input type="radio" name="when" value="завтра"><span>Завтра</span></label>
+            <label class="chip"><input type="radio" name="when" value="в субботу"><span>В субботу</span></label>
+          </div>
+        </fieldset>
+        <div class="phone cut" data-ui aria-live="polite">
+          <div class="phone-head"><span class="avatar" id="avatar" aria-hidden="true">В</span><span><b id="chat-name">Ваша компания</b><br>так заявка выглядит у вас в WhatsApp</span></div>
+          <p class="bubble" id="bubble">Здравствуйте! Хочу записаться в «Ваша компания».
+Услуга: компьютерная диагностика.
+Когда: сегодня.<small>сейчас</small></p>
+        </div>
+        <button class="btn btn-lume" type="submit">Хочу такую запись у себя</button>
+      </form>
+    </div>
+  </section>
+
+  <div class="paper">
+    <section class="wrap niches" aria-labelledby="niches-title">
+      <div class="niches-head">
+        <h2 id="niches-title" class="reveal">Сервисы,<br>клиники, салоны</h2>
+        <p class="reveal" style="--d:80ms">У каждой ниши свой главный вопрос клиента: сколько стоит диагностика, будет ли больно, есть ли окно на субботу. Сайт отвечает на него до звонка.</p>
+      </div>
+      <div class="niche-grid">
+        <figure class="tall reveal">
+          <img src="img/autoservice.jpg" alt="Мастер шлифует кузов белого фургона в гаражном автосервисе" width="1068" height="1600" loading="lazy">
+          <figcaption><b>Автосервисы</b>Цены на диагностику, марки, с которыми работаете, запись на удобный день.</figcaption>
+        </figure>
+        <figure class="wide reveal" style="--d:80ms">
+          <img src="img/dental.jpg" alt="Детский стоматолог улыбается мальчику в кабинете" width="1600" height="1066" loading="lazy">
+          <figcaption><b>Стоматологии</b>Врачи, цены на лечение и честный ответ на «а это больно?».</figcaption>
+        </figure>
+        <div class="niche-pair">
+          <figure class="salon reveal" style="--d:120ms">
+            <img src="img/salon.jpg" alt="Мастер рисует дизайн на ногтях клиентки" width="1068" height="1600" loading="lazy">
+            <figcaption><b>Салоны красоты</b>Мастера, работы и запись на свободное окно.</figcaption>
+          </figure>
+          <div class="other cut reveal" style="--d:160ms">
+            <b>Другая ниша?</b>
+            <p>Кафе, ремонт, обучение, услуги на дому: механика та же.</p>
+            <a class="wa" data-text="Здравствуйте! У меня другая ниша: " href="https://wa.me/" target="_blank" rel="noopener">Напишите, обсудим</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="prices" class="wrap prices" aria-labelledby="prices-title">
+      <div class="prices-head">
+        <h2 id="prices-title" class="reveal">Цены и что в них входит</h2>
+        <p class="reveal" style="--d:80ms">Цены фиксированные, всё, что входит, написано ниже. Рекламный бюджет вы платите площадкам напрямую, мы его не касаемся.</p>
+      </div>
+      <ul class="plans">
+        <li class="plan main cut reveal">
+          <div><h3>Визитка</h3><p class="what">Сайт за 7 дней и порядок в картах</p></div>
+          <ul>
+            <li>Сайт-визитка под вашу нишу, удобный с телефона</li>
+            <li>Тексты по вашим услугам и отзывам</li>
+            <li>Запись в WhatsApp в два касания</li>
+            <li>Карточки 2ГИС и Google: фото, услуги, цены, часы, ссылка на сайт</li>
+            <li>Счётчик: видно, сколько заявок пришло с сайта</li>
+            <li>Домен и сайт оформлены на вас</li>
+          </ul>
+          <div class="price"><b>200 000 ₸</b><span>разово</span></div>
+        </li>
+        <li class="plan cut reveal">
+          <div><h3>Автозапись</h3><p class="what">Запись, напоминания и учёт без администратора</p></div>
+          <ul>
+            <li>Онлайн-запись на свободное время</li>
+            <li>Напоминание клиенту накануне визита</li>
+            <li>Все заявки в одной таблице или CRM</li>
+            <li>Подписку сервиса записи, если он нужен, оплачиваете отдельно</li>
+          </ul>
+          <div class="price"><b>от 150 000 ₸</b><span>и 25 000 ₸ в месяц за поддержку</span></div>
+        </li>
+        <li class="plan cut reveal">
+          <div><h3>Реклама</h3><p class="what">Чтобы на сайт шли новые клиенты</p></div>
+          <ul>
+            <li>Instagram, 2ГИС и Google</li>
+            <li>Тексты и картинки объявлений</li>
+            <li>Отчёт каждую неделю: сколько заявок и почём каждая</li>
+            <li>Нужен сайт: наша визитка или ваш</li>
+          </ul>
+          <div class="price"><b>180 000 ₸</b><span>в месяц, плюс рекламный бюджет</span></div>
+        </li>
+        <li class="plan cut reveal">
+          <div><h3>Креативы</h3><p class="what">Для тех, кто ведёт рекламу сам</p></div>
+          <ul>
+            <li>8 баннеров под Instagram и 2ГИС</li>
+            <li>2 сценария коротких видео: снимаете на телефон по шагам</li>
+            <li>Правки до запуска</li>
+          </ul>
+          <div class="price"><b>120 000 ₸</b><span>в месяц</span></div>
+        </li>
+      </ul>
+      <div class="offer cut reveal">
+        <p>Первые три клиента получают «Визитку» за 140 000 ₸ в обмен на честный отзыв и разрешение показать работу.</p>
+        <a class="btn btn-ink wa" data-text="Здравствуйте! Хочу «Визитку» по цене для первых клиентов. Моя компания в 2ГИС: " href="https://wa.me/" target="_blank" rel="noopener">Занять место</a>
+      </div>
+    </section>
+  </div>
+
+  <section id="process" class="process" aria-labelledby="process-title">
+    <div class="wrap">
+      <h2 id="process-title" class="reveal">Запуск за 7 дней</h2>
+    </div>
+    <div class="wrap process-grid">
+      <div>
+        <p class="side reveal" style="--d:80ms">Всё решаем в WhatsApp и по видеосвязи. Работаем удалённо, с бизнесом из любого города.</p>
+      </div>
+      <ol class="steps">
+        <li class="step reveal"><div class="when">Сегодня</div><p>Пишете в WhatsApp название из 2ГИС.<span>Больше ничего не нужно: услуги, отзывы и фото мы соберём из вашей карточки.</span></p></li>
+        <li class="step reveal"><div class="when">Через 1–2 дня</div><p>Присылаем демо вашего сайта.<span>С вашими услугами, отзывами и записью в WhatsApp. Бесплатно.</span></p></li>
+        <li class="step reveal"><div class="when">За 7 дней</div><p>Дорабатываем и запускаем.<span>Домен, карточки 2ГИС и Google, проверка заявок. Предоплата 50%, остальное после запуска.</span></p></li>
+        <li class="step reveal"><div class="when">Каждую неделю</div><p>Если ведём рекламу, присылаем отчёт.<span>Сколько пришло заявок, почём каждая и что меняем дальше.</span></p></li>
+      </ol>
+    </div>
+  </section>
+
+  <div class="paper">
+    <section class="wrap about" aria-labelledby="about-title">
+      <div class="about-text">
+        <h2 id="about-title" class="reveal">Сначала маркетолог</h2>
+        <p class="lead reveal" style="--d:80ms">Clockwork делает performance-маркетолог, а не просто верстальщик. Мы годами ведём платную рекламу и считаем одно: сколько стоит заявка.</p>
+        <p class="reveal" style="--d:140ms">Поэтому сайт для нас не картинка, а механизм: реклама приводит людей, страница отвечает на вопросы, запись забирает заявку, напоминание приводит клиента.</p>
+        <ul class="facts">
+          <li class="cut reveal"><b>6 лет</b><span>реклама в Meta: Instagram и Facebook</span></li>
+          <li class="cut reveal" style="--d:60ms"><b>3,5 года</b><span>Google Ads, YouTube и TikTok</span></li>
+          <li class="cut reveal" style="--d:120ms"><b>$100 000+</b><span>в месяц: бюджет кабинета Google Ads, который мы вели</span></li>
+        </ul>
+      </div>
+      <figure class="about-figure reveal" style="--d:120ms">
+        <img src="img/arbat.jpg" alt="Пешеходная улица с магазинами и кафе летом, много людей" width="1600" height="1066" loading="lazy">
+        <figcaption>Улица, где у каждой двери может стоять очередь.</figcaption>
+      </figure>
+    </section>
+
+    <section id="faq" class="wrap faq" aria-labelledby="faq-title">
+      <h2 id="faq-title" class="reveal">Частые вопросы</h2>
+      <div class="faq-list">
+        <details class="cut reveal">
+          <summary>Зачем сайт, если есть Instagram и 2ГИС?</summary>
+          <p>2ГИС показывает вас тем, кто уже ищет рядом, Instagram показывает подписчикам. Сайт нужен, чтобы реклама вела туда, где есть цены, ответы и кнопка записи, и клиент не уходил к соседу, пока ждёт ответа в директе. Ещё сайт находят в Google.</p>
+        </details>
+        <details class="cut reveal">
+          <summary>Что, если демо не понравится?</summary>
+          <p>Ничего не платите и ничего не должны. Демо мы делаем за свой счёт.</p>
+        </details>
+        <details class="cut reveal">
+          <summary>Чем Автозапись лучше администратора?</summary>
+          <p>Она не болеет, не уходит в отпуск и отвечает в три часа ночи. Администратор остаётся для живых людей в зале, а запись, напоминания и учёт заявок идут сами.</p>
+        </details>
+        <details class="cut reveal">
+          <summary>Сколько денег нужно на рекламу сверху?</summary>
+          <p>Бюджет вы платите площадкам напрямую. Сумму обсуждаем после демо: от ниши и района зависит, сколько стоит одна заявка, и мы посчитаем это до старта.</p>
+        </details>
+        <details class="cut reveal">
+          <summary>Кому принадлежит сайт?</summary>
+          <p>Вам. Домен оформляем на вас, файлы сайта передаём. Если решите работать с кем-то другим, сайт остаётся у вас.</p>
+        </details>
+        <details class="cut reveal">
+          <summary>Как платить?</summary>
+          <p>За Визитку и Автозапись 50% до начала работы, остальное после запуска. Реклама и Креативы помесячно, в начале месяца.</p>
+        </details>
+      </div>
+    </section>
+  </div>
+
+  <section class="final" aria-labelledby="final-title">
+    <div class="wrap final-grid">
+      <div>
+        <h2 id="final-title" class="reveal">Пришлите название из 2ГИС</h2>
+        <p class="reveal" style="--d:80ms">Через 1–2 дня покажем демо вашего сайта с записью. Бесплатно и ни к чему не обязывает.</p>
+      </div>
+      <a class="btn btn-ink wa reveal" style="--d:140ms" data-text="Здравствуйте! Хочу бесплатное демо сайта с записью. Моя компания в 2ГИС: " href="https://wa.me/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.2A9.8 9.8 0 0 0 3.6 17l-1.3 4.8 4.9-1.3A9.8 9.8 0 1 0 12 2.2Zm0 17.8a8 8 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8 8 0 1 1 12 20Zm4.4-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8 1c-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5a.9.9 0 0 0-.7.3 2.8 2.8 0 0 0-.9 2.1 4.9 4.9 0 0 0 1 2.6 11.2 11.2 0 0 0 4.3 3.8c1.6.7 2.2.7 3 .6a2.6 2.6 0 0 0 1.7-1.2 2.1 2.1 0 0 0 .1-1.2c0-.1-.2-.2-.5-.3Z"/></svg>
+        Написать в WhatsApp
+      </a>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <div class="foot-logo" aria-label="Clockwork"><svg aria-hidden="true"><use href="#mark"/></svg>Clockwork</div>
+  <div class="foot-row">
+    <p>Сайты-визитки, онлайн-запись и реклама для сервисов, клиник и салонов. Уведомления и история на первых экранах — примеры, не реальные клиенты.</p>
+    <p>Фото: «Arbat, Almaty (June 2018)», Алексей Тараканов, CC BY-SA 2.0; фото автосервиса, стоматологии и маникюра — Nenad Stojkovic (shixart1985), CC BY 2.0. Все — <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a>.</p>
+  </div>
+</footer>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var phone = (document.body.getAttribute('data-wa') || '').replace(/\D/g, '');
+  function wa(text){ return 'https://wa.me/' + phone + (text ? '?text=' + encodeURIComponent(text) : ''); }
+  document.querySelectorAll('a.wa').forEach(function(a){ a.href = wa(a.getAttribute('data-text') || ''); });
+
+  // the watch: hands start as the check mark (10:08), then sweep to the visitor's time
+  var hH = document.getElementById('hand-h'), hM = document.getElementById('hand-m'), hS = document.getElementById('hand-s');
+  function setHands(h, m, s){
+    hH.style.transform = 'rotate(' + h + 'deg)';
+    hM.style.transform = 'rotate(' + m + 'deg)';
+    hS.style.transform = 'rotate(' + s + 'deg)';
+  }
+  function secondsNow(){ var d = new Date(); return d.getHours() * 3600 + d.getMinutes() * 60 + d.getSeconds(); }
+  setHands(304, 48, 0);
+  var t0 = secondsNow();
+  var h0 = t0 / 120 % 360, m0 = t0 / 10 % 360, s0 = t0 * 6 % 360;
+  if (h0 < 304) h0 += 360;   // sweep forward from the check mark, never backwards
+  if (m0 < 48) m0 += 360;
+  s0 += 360;
+  function follow(){
+    var dt = secondsNow() - t0;
+    setHands(h0 + dt / 120, m0 + dt / 10, s0 + dt * 6);
+  }
+  if (still) {
+    [hH, hM, hS].forEach(function(el){ el.classList.add('still'); });
+    follow(); setInterval(follow, 1000);
+  } else {
+    setTimeout(function(){
+      [hH, hM, hS].forEach(function(el){ el.classList.remove('still'); });
+      follow();
+      setTimeout(function(){
+        [hH, hM].forEach(function(el){ el.classList.add('still'); });
+        hS.classList.add('tick');
+        setInterval(follow, 1000);
+      }, 1900);
+    }, 900);
+  }
+
+  // notification feed
+  var feed = document.getElementById('feed');
+  var events = [
+    ['01:26','Новая запись','Стрижка, завтра в 18:30'],
+    ['07:30','Напоминание отправлено','Диагностика сегодня в 10:00'],
+    ['12:05','Заявка с сайта','Консультация ортодонта'],
+    ['02:51','Новая запись','Замена масла, пятница'],
+    ['19:40','Новая запись','Окрашивание, воскресенье'],
+    ['09:00','Напоминание отправлено','Чистка зубов в 12:00']
+  ];
+  var i = 0;
+  if (feed && !still) {
+    setInterval(function(){
+      if (document.hidden) return;
+      var e = events[i++ % events.length];
+      var li = document.createElement('li');
+      li.className = 'note cut enter';
+      li.innerHTML = '<b>' + e[0] + '</b><div><strong>' + e[1] + '</strong><span>' + e[2] + '</span></div>';
+      feed.insertBefore(li, feed.firstChild);
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ li.classList.remove('enter'); }); });
+      while (feed.children.length > 3) feed.removeChild(feed.lastChild);
+    }, 3400);
+  }
+
+  // live booking demo
+  var form = document.getElementById('try');
+  var bubble = document.getElementById('bubble');
+  var chatName = document.getElementById('chat-name');
+  var avatar = document.getElementById('avatar');
+  var services = document.getElementById('services');
+  var sets = {
+    auto: [['компьютерная диагностика','Диагностика'],['ремонт ходовой','Ходовая'],['замена масла','Замена масла'],['ремонт коробки передач','Коробка']],
+    dent: [['консультация','Консультация'],['профессиональная чистка','Чистка'],['лечение кариеса','Лечение'],['имплантация','Импланты']],
+    beauty: [['стрижка','Стрижка'],['окрашивание','Окрашивание'],['маникюр','Маникюр'],['брови и ресницы','Брови']]
+  };
+  var labels = {auto:'автосервис', dent:'стоматология', beauty:'салон красоты'};
+  function val(name){ var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
+  function render(bump){
+    var name = form.biz.value.trim() || 'Ваша компания';
+    bubble.firstChild.nodeValue = 'Здравствуйте! Хочу записаться в «' + name + '».\nУслуга: ' + val('service') + '.\nКогда: ' + val('when') + '.';
+    chatName.textContent = name;
+    avatar.textContent = name.charAt(0).toUpperCase();
+    if (bump && !still) { bubble.classList.remove('bump'); void bubble.offsetWidth; bubble.classList.add('bump'); }
+  }
+  function fillServices(){
+    var list = sets[val('niche')] || sets.auto;
+    services.innerHTML = list.map(function(s, k){
+      return '<label class="chip"><input type="radio" name="service" value="' + s[0] + '"' + (k === 0 ? ' checked' : '') + '><span>' + s[1] + '</span></label>';
+    }).join('');
+  }
+  form.addEventListener('change', function(e){ if (e.target.name === 'niche') fillServices(); render(true); });
+  form.addEventListener('input', function(e){ if (e.target.name === 'biz') render(false); });
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = form.biz.value.trim();
+    window.open(wa('Здравствуйте! Хочу сайт с записью в WhatsApp' + (name ? ' для «' + name + '»' : '') + ' (' + labels[val('niche')] + ').'), '_blank', 'noopener');
+  });
+  render(false);
+
+  // entrances
+  var items = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('in'); }); }
+  else {
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, {rootMargin: '0px 0px -8% 0px', threshold: 0.08});
+    items.forEach(function(el){ io.observe(el); });
+  }
+})();
+</script>
+</body>
+</html>
