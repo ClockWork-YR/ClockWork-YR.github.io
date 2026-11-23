@@ -8,6 +8,12 @@
 <meta property="og:title" content="Clockwork — записывает, пока вы спите">
 <meta property="og:description" content="Сайт-визитка с онлайн-записью и напоминаниями. Демо за 1–2 дня бесплатно.">
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://clockwork-yr.github.io/">
+<meta property="og:image" content="https://clockwork-yr.github.io/img/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0B0F0D">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2222%22 fill=%22#0B0F0D%22/%3E%3Cg transform=%22translate(8 8) scale(.84)%22%3E%3Cpath d=%22M42.62,10.18 L44.92,3.27 L55.08,3.27 L57.38,10.18 L60.48,10.88 L63.52,11.82 L68.97,7.00 L77.76,12.07 L76.30,19.20 L78.64,21.36 L80.80,23.70 L87.93,22.24 L93.00,31.03 L88.18,36.48 L89.12,39.52 L89.82,42.62 L96.73,44.92 L96.73,55.08 L89.82,57.38 L89.12,60.48 L88.18,63.52 L93.00,68.97 L87.93,77.76 L80.80,76.30 L78.64,78.64 L76.30,80.80 L77.76,87.93 L68.97,93.00 L63.52,88.18 L60.48,89.12 L57.38,89.82 L55.08,96.73 L44.92,96.73 L42.62,89.82 L39.52,89.12 L36.48,88.18 L31.03,93.00 L22.24,87.93 L23.70,80.80 L21.36,78.64 L19.20,76.30 L12.07,77.76 L7.00,68.97 L11.82,63.52 L10.88,60.48 L10.18,57.38 L3.27,55.08 L3.27,44.92 L10.18,42.62 L10.88,39.52 L11.82,36.48 L7.00,31.03 L12.07,22.24 L19.20,23.70 L21.36,21.36 L23.70,19.20 L22.24,12.07 L31.03,7.00 L36.48,11.82 L39.52,10.88 Z%22 fill=%22#C8FF2E%22/%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2232.6%22 fill=%22#0B0F0D%22/%3E%3Crect x=%2247.3%22 y=%2220.5%22 width=%225.4%22 height=%227%22 fill=%22#ECEFE9%22/%3E%3Cpolyline points=%2237.15,41.33 50,50 68.58,33.27%22 fill=%22none%22 stroke=%22#ECEFE9%22 stroke-width=%228%22 stroke-linecap=%22square%22 stroke-linejoin=%22miter%22/%3E%3C/g%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -155,6 +161,20 @@ p{max-width:60ch}
 .sheet .btn{margin-top:24px;width:100%}
 @media (max-width:980px){.demo-grid{grid-template-columns:1fr}}
 
+/* mini site preview inside the demo */
+.mini{--c:18px;margin-top:clamp(28px,3vw,44px);background:var(--paper);color:var(--ink);max-width:520px}
+.mini-pic{overflow:hidden;background:var(--night)}
+.mini-pic img{width:100%;aspect-ratio:16/8;object-fit:cover;transition:opacity .25s var(--ease),transform .4s var(--ease)}
+.mini.swap .mini-pic img{opacity:0;transform:scale(1.04)}
+.mini-body{padding:20px 22px 24px;display:grid;gap:6px;justify-items:start}
+.mini-body b{font-family:var(--display);font-weight:900;font-size:clamp(24px,2.2vw,32px);letter-spacing:-.02em;line-height:1.05;max-width:100%;overflow-wrap:anywhere}
+.mini-body > span:not(.mini-btn){font-size:15px;color:var(--ink-soft)}
+.mini-body ul{list-style:none;display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 6px}
+.mini-body li{--c:6px;font-size:14px;font-weight:500;padding:6px 12px;background:var(--paper-2);clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%,0 var(--c));transition:background-color .2s var(--ease)}
+.mini-body li.on{background:var(--lume);font-weight:700}
+.mini-btn{--c:8px;display:inline-flex;align-items:center;min-height:42px;padding:0 18px;background:var(--ink);color:var(--paper);font-family:var(--display);font-weight:800;font-size:15px;clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%,0 var(--c))}
+@media (prefers-reduced-motion:reduce){.mini-pic img{transition:none}}
+
 /* niches */
 .niches{padding-top:var(--gap-section)}
 .niches-head{display:grid;grid-template-columns:8fr 4fr;gap:clamp(28px,4vw,72px);align-items:end}
@@ -242,10 +262,16 @@ p{max-width:60ch}
 .facts{list-style:none;display:grid;gap:10px;margin-top:clamp(36px,4vw,56px)}
 .facts li{--c:14px;display:grid;grid-template-columns:minmax(7.4ch,max-content) 1fr;gap:24px;align-items:baseline;background:var(--paper-2);padding:22px 26px}
 .facts b{font-family:var(--display);font-size:clamp(32px,3.4vw,54px);font-weight:900;letter-spacing:-.02em;line-height:1;white-space:nowrap}
-.about-figure img{width:100%;aspect-ratio:3/2.4;object-fit:cover}
-.about-figure figcaption{margin-top:12px;font-size:var(--size-small);color:var(--ink-soft)}
 @media (max-width:980px){.about{grid-template-columns:1fr}}
 @media (max-width:420px){.facts li{grid-template-columns:1fr;gap:6px}}
+
+/* experience */
+.skills{list-style:none;display:grid;gap:clamp(28px,3vw,44px);padding-top:clamp(4px,1vw,12px)}
+.skills h3{font-size:clamp(26px,2.4vw,38px);font-weight:900}
+.skills p{margin-top:10px;font-size:var(--size-lead);line-height:1.4}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.tags span{--c:6px;font-size:15px;font-weight:500;padding:7px 13px;background:var(--paper-2);clip-path:polygon(var(--c) 0,100% 0,100% calc(100% - var(--c)),calc(100% - var(--c)) 100%,0 100%,0 var(--c))}
+.skills li:first-child .tags span{background:var(--lume)}
 
 /* faq */
 .faq{padding-bottom:var(--gap-section);display:grid;grid-template-columns:4fr 8fr;gap:clamp(36px,5vw,96px);align-items:start}
@@ -362,7 +388,16 @@ p{max-width:60ch}
     <div class="wrap demo-grid">
       <div>
         <p class="intro reveal" style="--d:80ms">Клиент выбирает услугу и время, вам в WhatsApp приходит готовая заявка. Без вопросов «а сколько стоит?» в директе.</p>
-        <p class="reveal" style="--d:140ms">Попробуйте на своём бизнесе: впишите название и пощёлкайте. Такая запись будет на вашем сайте.</p>
+        <p class="reveal" style="--d:140ms">Выберите нишу и впишите название: увидите свой будущий сайт и заявку, которая придёт вам в WhatsApp.</p>
+        <div class="mini cut reveal" style="--d:180ms" id="mini" data-ui aria-hidden="true">
+          <div class="mini-pic"><img id="mini-img" src="img/il-auto.svg" alt="" width="640" height="360"></div>
+          <div class="mini-body">
+            <b id="mini-name">Ваша компания</b>
+            <span id="mini-kind">Автосервис · запись онлайн</span>
+            <ul id="mini-list"><li class="on">Диагностика</li><li>Ходовая</li><li>Замена масла</li><li>Коробка</li></ul>
+            <span class="mini-btn">Записаться</span>
+          </div>
+        </div>
       </div>
       <form class="sheet cut reveal" style="--d:120ms" id="try" action="https://wa.me/" method="get" target="_blank">
         <fieldset class="field">
@@ -443,7 +478,7 @@ p{max-width:60ch}
             <label><input type="radio" name="tier" value="pro"><span>Премиум</span></label>
           </div>
         </div>
-        <p class="reveal" style="--d:80ms"><span class="std">Стандарт — быстрый запуск по проверенной схеме для вашей ниши.</span><span class="pro">Премиум — индивидуальный дизайн, больше автоматизации и личное внимание каждую неделю.</span> Рекламный бюджет вы платите площадкам напрямую.</p>
+        <p class="reveal" style="--d:80ms"><span class="std">Стандарт — быстрый запуск по проверенной схеме для вашей ниши.</span><span class="pro">Премиум — индивидуальный дизайн, больше автоматизации и личное внимание каждую неделю.</span></p>
       </div>
       <ul class="plans">
         <li class="plan main cut reveal">
@@ -475,31 +510,6 @@ p{max-width:60ch}
           </ul>
           <div class="price"><b class="std">от 250 000 ₸</b><b class="pro">от 450 000 ₸</b><span><span class="std">и 40 000 ₸ в месяц за поддержку</span><span class="pro">и 70 000 ₸ в месяц за поддержку</span></span></div>
         </li>
-        <li class="plan cut reveal">
-          <div><h3>Реклама<span class="pro"> Премиум</span></h3><p class="what"><span class="std">Чтобы на сайт шли новые клиенты</span><span class="pro">Поток заявок под ключ</span></p></div>
-          <ul>
-            <li>Instagram, 2ГИС и Google</li>
-            <li class="std">Тексты и картинки объявлений</li>
-            <li class="pro">Креативы и видео уже включены</li>
-            <li class="pro">Тесты объявлений и оптимизация каждый день</li>
-            <li class="pro">Созвон каждую неделю</li>
-            <li>Отчёт каждую неделю: сколько заявок и почём каждая</li>
-            <li>Нужен сайт: наша визитка или ваш</li>
-          </ul>
-          <div class="price"><b class="std">250 000 ₸</b><b class="pro">450 000 ₸</b><span>в месяц, плюс рекламный бюджет</span></div>
-        </li>
-        <li class="plan cut reveal">
-          <div><h3>Креативы<span class="pro"> Премиум</span></h3><p class="what"><span class="std">Для тех, кто ведёт рекламу сам</span><span class="pro">Свой контент-отдел без найма</span></p></div>
-          <ul>
-            <li class="std">8 баннеров под Instagram и 2ГИС</li>
-            <li class="std">2 сценария коротких видео: снимаете на телефон по шагам</li>
-            <li class="std">Правки до запуска</li>
-            <li class="pro">16 баннеров под Instagram и 2ГИС</li>
-            <li class="pro">4 видео под ключ: сценарий и монтаж</li>
-            <li class="pro">Правки весь месяц</li>
-          </ul>
-          <div class="price"><b class="std">180 000 ₸</b><b class="pro">350 000 ₸</b><span>в месяц</span></div>
-        </li>
       </ul>
       <div class="offer cut reveal">
         <p>Первые три клиента получают «Визитку» за 250 000 ₸ в обмен на честный отзыв и разрешение показать работу.</p>
@@ -520,7 +530,7 @@ p{max-width:60ch}
         <li class="step reveal"><div class="when">Сегодня</div><p>Пишете в WhatsApp название из 2ГИС.<span>Больше ничего не нужно: услуги, отзывы и фото мы соберём из вашей карточки.</span></p></li>
         <li class="step reveal"><div class="when">Через 1–2 дня</div><p>Присылаем демо вашего сайта.<span>С вашими услугами, отзывами и записью в WhatsApp. Бесплатно.</span></p></li>
         <li class="step reveal"><div class="when">За 7 дней</div><p>Дорабатываем и запускаем.<span>Домен, карточки 2ГИС и Google, проверка заявок. Предоплата 50%, остальное после запуска.</span></p></li>
-        <li class="step reveal"><div class="when">Каждую неделю</div><p>Если ведём рекламу, присылаем отчёт.<span>Сколько пришло заявок, почём каждая и что меняем дальше.</span></p></li>
+        <li class="step reveal"><div class="when">Каждый месяц</div><p>Присылаем отчёт по заявкам.<span>Сколько пришло с сайта, сколько записалось и что улучшить.</span></p></li>
       </ol>
     </div>
   </section>
@@ -528,18 +538,20 @@ p{max-width:60ch}
   <div class="paper">
     <section class="wrap about" aria-labelledby="about-title">
       <div class="about-text">
-        <h2 id="about-title" class="reveal">Сначала маркетолог</h2>
-        <p class="lead reveal" style="--d:80ms">Clockwork делает performance-маркетолог, а не просто верстальщик. Мы годами ведём платную рекламу и считаем одно: сколько стоит заявка.</p>
-        <p class="reveal" style="--d:140ms">Поэтому сайт для нас не картинка, а механизм: реклама приводит людей, страница отвечает на вопросы, запись забирает заявку, напоминание приводит клиента.</p>
+        <h2 id="about-title" class="reveal">6 лет в digital</h2>
+        <p class="lead reveal" style="--d:80ms">Мы знаем, где бизнес теряет заявки, потому что шесть лет смотрим на это изнутри: ведём рекламу, разбираем сайты и считаем, сколько стоит каждый клиент.</p>
         <ul class="facts">
-          <li class="cut reveal"><b>6 лет</b><span>реклама в Meta: Instagram и Facebook</span></li>
-          <li class="cut reveal" style="--d:60ms"><b>3,5 года</b><span>Google Ads, YouTube и TikTok</span></li>
-          <li class="cut reveal" style="--d:120ms"><b>$100 000+</b><span>в месяц: бюджет кабинета Google Ads, который мы вели</span></li>
+          <li class="cut reveal"><b>3 года</b><span>рекламы для e-commerce проектов</span></li>
+          <li class="cut reveal" style="--d:60ms"><b>$100 000+</b><span>в месяц: бюджет кабинета Google Ads, который мы вели</span></li>
+          <li class="cut reveal" style="--d:120ms"><b>4</b><span>рекламные платформы: Meta, Google, YouTube, TikTok</span></li>
         </ul>
       </div>
-      <figure class="about-figure reveal" style="--d:120ms">
-        <img src="img/il-machine.svg" alt="Рисунок: телефон с подтверждёнными заявками на фоне шестерёнок" width="600" height="480" loading="lazy">
-      </figure>
+      <ul class="skills">
+        <li class="reveal"><h3>Ведение рекламы</h3><p>Запускаем и оптимизируем платную рекламу так, чтобы заявка стоила дешевле.</p><div class="tags"><span>Instagram и Facebook</span><span>Google Ads</span><span>YouTube</span><span>TikTok</span></div></li>
+        <li class="reveal" style="--d:60ms"><h3>Аудиты</h3><p>Разбираем сайты и рекламные кампании: где утекают деньги и что исправить первым.</p><div class="tags"><span>Сайты</span><span>Рекламные кабинеты</span><span>Путь до заявки</span></div></li>
+        <li class="reveal" style="--d:120ms"><h3>Лендинги</h3><p>Делаем страницы под одну цель: чтобы человек записался.</p><div class="tags"><span>Структура и тексты</span><span>Дизайн</span><span>Формы и запись</span></div></li>
+        <li class="reveal" style="--d:180ms"><h3>Аналитика</h3><p>Настраиваем учёт: видно, откуда пришёл клиент и во сколько обошёлся.</p><div class="tags"><span>GA4</span><span>Счётчики заявок</span><span>Отчёты</span></div></li>
+      </ul>
     </section>
 
     <section id="faq" class="wrap faq" aria-labelledby="faq-title">
@@ -547,7 +559,7 @@ p{max-width:60ch}
       <div class="faq-list">
         <details class="cut reveal">
           <summary>Зачем сайт, если есть Instagram и 2ГИС?</summary>
-          <p>2ГИС показывает вас тем, кто уже ищет рядом, Instagram показывает подписчикам. Сайт нужен, чтобы реклама вела туда, где есть цены, ответы и кнопка записи, и клиент не уходил к соседу, пока ждёт ответа в директе. Ещё сайт находят в Google.</p>
+          <p>2ГИС показывает вас тем, кто уже ищет рядом, Instagram показывает подписчикам. Сайт нужен, чтобы у клиента было место с ценами, ответами и кнопкой записи, и он не уходил к соседу, пока ждёт ответа в директе. Ещё сайт находят в Google.</p>
         </details>
         <details class="cut reveal">
           <summary>Что, если демо не понравится?</summary>
@@ -558,8 +570,8 @@ p{max-width:60ch}
           <p>Она не болеет, не уходит в отпуск и отвечает в три часа ночи. Администратор остаётся для живых людей в зале, а запись, напоминания и учёт заявок идут сами.</p>
         </details>
         <details class="cut reveal">
-          <summary>Сколько денег нужно на рекламу сверху?</summary>
-          <p>Бюджет вы платите площадкам напрямую. Сумму обсуждаем после демо: от ниши и района зависит, сколько стоит одна заявка, и мы посчитаем это до старта.</p>
+          <summary>Что нужно от меня?</summary>
+          <p>Название из 2ГИС и 15 минут на созвон. Тексты пишем мы, фото снимете на телефон по нашему списку.</p>
         </details>
         <details class="cut reveal">
           <summary>Кому принадлежит сайт?</summary>
@@ -567,7 +579,7 @@ p{max-width:60ch}
         </details>
         <details class="cut reveal">
           <summary>Как платить?</summary>
-          <p>За Визитку и Автозапись 50% до начала работы, остальное после запуска. Реклама и Креативы помесячно, в начале месяца.</p>
+          <p>За Визитку и Автозапись 50% до начала работы, остальное после запуска. Поддержка Автозаписи помесячно, в начале месяца.</p>
         </details>
       </div>
     </section>
@@ -590,7 +602,7 @@ p{max-width:60ch}
 <footer class="wrap foot">
   <div class="foot-logo" aria-label="Clockwork"><svg aria-hidden="true"><use href="#mark"/></svg>Clockwork</div>
   <div class="foot-row">
-    <p>Сайты-визитки, онлайн-запись и реклама для сервисов, клиник и салонов. Уведомления и история ночи — примеры, не реальные клиенты.</p>
+    <p>Сайты-визитки и онлайн-запись для сервисов, клиник и салонов. Уведомления и история ночи — примеры, не реальные клиенты.</p>
   </div>
 </footer>
 
@@ -671,6 +683,27 @@ document.documentElement.classList.add('js');
     beauty: [['стрижка','Стрижка'],['окрашивание','Окрашивание'],['маникюр','Маникюр'],['брови и ресницы','Брови']]
   };
   var labels = {auto:'автосервис', dent:'стоматология', beauty:'салон красоты'};
+  var mini = document.getElementById('mini'), miniImg = document.getElementById('mini-img');
+  var miniName = document.getElementById('mini-name'), miniKind = document.getElementById('mini-kind'), miniList = document.getElementById('mini-list');
+  var looks = {
+    auto: ['img/il-auto.svg', 'Автосервис · запись онлайн'],
+    dent: ['img/il-dent.svg', 'Стоматология · запись онлайн'],
+    beauty: ['img/il-salon.svg', 'Салон красоты · запись онлайн']
+  };
+  var shown = 'auto';
+  function renderMini(){
+    var n = val('niche') || 'auto';
+    miniName.textContent = form.biz.value.trim() || 'Ваша компания';
+    miniKind.textContent = looks[n][1];
+    var chosen = val('service');
+    miniList.innerHTML = (sets[n] || sets.auto).map(function(s){ return '<li' + (s[0] === chosen ? ' class="on"' : '') + '>' + s[1] + '</li>'; }).join('');
+    if (n !== shown) {
+      shown = n;
+      if (still) { miniImg.src = looks[n][0]; return; }
+      mini.classList.add('swap');
+      setTimeout(function(){ miniImg.src = looks[n][0]; mini.classList.remove('swap'); }, 220);
+    }
+  }
   function val(name){ var el = form.querySelector('input[name="' + name + '"]:checked'); return el ? el.value : ''; }
   function render(bump){
     var name = form.biz.value.trim() || 'Ваша компания';
@@ -678,6 +711,7 @@ document.documentElement.classList.add('js');
     chatName.textContent = name;
     avatar.textContent = name.charAt(0).toUpperCase();
     if (bump && !still) { bubble.classList.remove('bump'); void bubble.offsetWidth; bubble.classList.add('bump'); }
+    renderMini();
   }
   function fillServices(){
     var list = sets[val('niche')] || sets.auto;
