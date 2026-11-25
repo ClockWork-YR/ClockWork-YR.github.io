@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Garage auto service — автосервис в Аксае, Алматы</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Garage auto service — найдём причину. Демо сайта">
+<meta property="og:description" content="Ходовая, электрика, развал и шиномонтаж в Аксае. Запись в WhatsApp на русском и казахском.">
+<meta property="og:image" content="https://clockwork-yr.github.io/demo/garage/img/alignment.jpg">
+<meta name="description" content="Garage auto service в Аксае, Алматы: ходовая, электрика, развал-схождение, рулевые рейки, шиномонтаж и детейлинг в одном месте. 5,0 в 2ГИС. Запись в WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --white:#FFFFFF;
+  --paper:#F1F1F1;
+  --ink:#0A0A0A;
+  --muted:#4F4F4F;
+  --blue:#2436FF;
+  --blue-press:#1626E0;
+  --red:#FF3B1F;
+  --navy:#050A5C;
+  --margin:clamp(16px,2.2vw,32px);
+  --gap:clamp(120px,12vw,200px);
+  --size-hero:clamp(60px,12vw,190px);
+  --size-h2:clamp(40px,6.4vw,104px);
+  --size-statement:clamp(22px,2.1vw,32px);
+  --size-body:clamp(17px,1.2vw,19px);
+  --size-small:15px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--white);color:var(--ink);font-family:"Rubik",system-ui,sans-serif;font-size:var(--size-body);line-height:1.5;font-variant-numeric:tabular-nums}
+main{overflow-x:clip}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--red);outline-offset:3px}
+::selection{background:var(--red);color:var(--ink)}
+.wrap{padding-inline:var(--margin);max-width:1600px;margin-inline:auto}
+h1,h2{font-weight:900;letter-spacing:-.045em;line-height:.88}
+h2{font-size:var(--size-h2);max-width:12ch}
+h3{font-weight:700;font-size:clamp(21px,1.7vw,27px);letter-spacing:-.02em;line-height:1.15}
+p{max-width:60ch}
+
+/* buttons: square, chunky */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:60px;padding:0 30px;border-radius:0;font:700 18px/1 "Rubik",sans-serif;text-decoration:none;border:0;cursor:pointer;transition:transform .16s var(--ease),background-color .16s var(--ease)}
+.btn:active{transform:translateY(2px) scale(.98)}
+.btn-red{background:var(--red);color:var(--ink)}
+.btn-red:hover{background:#E8331A}
+.btn-black{background:var(--ink);color:var(--white)}
+.btn-black:hover{background:#262626}
+.btn-white{background:var(--white);color:var(--ink)}
+.btn-white:hover{background:var(--paper)}
+.btn-blue{background:var(--blue);color:var(--white)}
+.btn-blue:hover{background:var(--blue-press)}
+
+/* nav */
+.top{background:var(--blue);color:var(--white)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-block:18px}
+.wordmark{font-weight:900;font-size:22px;letter-spacing:-.04em;text-decoration:none}
+.nav-links{display:flex;gap:28px;list-style:none;font-weight:500;font-size:16px}
+.nav-links a{text-decoration:none}
+.nav-links a:hover{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.nav-right{display:flex;align-items:center;gap:10px}
+.lang{display:none;background:var(--navy)}
+.js .lang{display:flex}
+.lang button{min-height:44px;min-width:56px;padding:0 12px;border:0;background:transparent;color:var(--white);font:700 15px/1 "Rubik",sans-serif;cursor:pointer;transition:background-color .15s var(--ease)}
+.lang button[aria-pressed="true"]{background:var(--white);color:var(--ink)}
+.lang button:hover:not([aria-pressed="true"]){background:#141B7A}
+.nav .btn{min-height:44px;padding:0 18px;font-size:15px}
+@media (max-width:1000px){.nav-links{display:none}}
+@media (max-width:560px){.nav .call{display:none}}
+
+/* hero */
+.hero{background:var(--blue);color:var(--white);padding-bottom:clamp(40px,5vw,80px);position:relative}
+.hero-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,3vw,48px);align-items:end;padding-top:clamp(32px,5vw,80px)}
+.hero h1{font-size:var(--size-hero)}
+.hero .lead{margin-top:36px;font-size:clamp(19px,1.55vw,24px);line-height:1.45;max-width:38ch}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:40px}
+.hero-side{display:grid;gap:20px;align-content:end}
+.hero-photo{transform:rotate(-4deg);transform-origin:60% 50%;margin-right:calc(-1 * var(--margin));background:var(--navy)}
+.hero-photo img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:35% 50%}
+.score{display:flex;align-items:baseline;gap:16px;background:var(--red);color:var(--ink);padding:18px 22px;justify-self:start}
+.score strong{font-weight:900;font-size:clamp(44px,4.4vw,68px);letter-spacing:-.05em;line-height:.9}
+.score span{font-weight:500;font-size:16px;line-height:1.3}
+.score a{font-weight:700}
+@media (max-width:960px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-photo{margin-right:0;margin-top:12px}
+}
+
+/* marquee */
+.marquee{background:var(--ink);color:var(--white);overflow:hidden;padding-block:20px}
+.marquee-track{display:flex;width:max-content;gap:0;font-weight:900;font-size:clamp(24px,2.6vw,40px);letter-spacing:-.03em;white-space:nowrap}
+.marquee-track span{padding-inline:.5em}
+.marquee-track span:nth-child(3n+2){color:var(--red)}
+.js .marquee-track{animation:slide 38s linear infinite}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* sayings: row of panels of unequal width */
+.sayings{margin-top:var(--gap)}
+.sayings-head{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,4vw,80px);align-items:end}
+.sayings-head p{font-size:var(--size-statement);line-height:1.3;font-weight:500;letter-spacing:-.01em;max-width:30ch}
+.panels{display:grid;grid-template-columns:5fr 4fr 3fr;grid-auto-rows:minmax(260px,auto);gap:0;margin-top:clamp(40px,4vw,64px)}
+.panel{padding:clamp(24px,2.6vw,40px);display:flex;flex-direction:column;justify-content:space-between;gap:28px}
+.panel q{quotes:none;display:block;font-weight:900;font-size:clamp(26px,2.6vw,42px);letter-spacing:-.035em;line-height:1.06}
+.panel cite{font-style:normal;font-size:var(--size-small);font-weight:500}
+.panel.p1{background:var(--red);color:var(--ink)}
+.panel.p2{background:var(--ink);color:var(--white)}
+.panel.p3{background:var(--paper);color:var(--ink)}
+.panel.p4{background:var(--navy);color:var(--white);grid-column:span 2}
+.panel.p5{background:var(--blue);color:var(--white)}
+.panel.big{justify-content:center}
+.panel.big strong{font-weight:900;font-size:clamp(96px,11vw,176px);letter-spacing:-.06em;line-height:.8}
+.panel.big span{margin-top:14px;font-weight:500;font-size:16px}
+.sayings .src{margin-top:24px}
+@media (max-width:900px){.sayings-head{grid-template-columns:1fr}.panels{grid-template-columns:1fr 1fr}.panel.p4{grid-column:span 2}}
+@media (max-width:560px){.panels{grid-template-columns:1fr;grid-auto-rows:auto}.panel.p4{grid-column:auto}.panel{min-height:200px}}
+
+/* booking: the live thing */
+.booking{margin-top:var(--gap);background:var(--paper);padding-block:clamp(88px,10vw,160px)}
+.booking-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:start}
+.booking .intro{margin-top:28px;font-size:clamp(18px,1.35vw,21px)}
+.booking .alt{margin-top:28px}
+.booking .alt a{font-weight:900;font-size:clamp(24px,2.2vw,34px);letter-spacing:-.03em;text-decoration:none}
+.sheet{background:var(--white);padding:clamp(22px,3vw,44px)}
+.field{border:0;margin-bottom:30px}
+.field legend,.field .lbl{display:block;font-weight:700;font-size:17px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:48px;padding:0 18px;background:var(--paper);font-weight:500;font-size:16px;transition:background-color .15s var(--ease),color .15s var(--ease),transform .15s var(--ease)}
+.chip:hover span{background:#E3E3E3}
+.chip input:checked + span{background:var(--blue);color:var(--white);font-weight:700}
+.chip input:focus-visible + span{outline:3px solid var(--red);outline-offset:3px}
+.chip input:active + span{transform:scale(.96)}
+.text-input{width:100%;min-height:56px;padding:0 18px;border:0;background:var(--paper);color:var(--ink);font:500 17px "Rubik",sans-serif;border-radius:0}
+.text-input::placeholder{color:#6E6E6E}
+.msg{background:var(--ink);color:var(--white);padding:22px 24px;margin-top:6px}
+.msg-label{font-weight:700;font-size:15px;color:#BDBDBD;margin-bottom:8px}
+.msg p{white-space:pre-line;font-size:17px;max-width:none}
+.sheet .btn{width:100%;margin-top:16px;min-height:64px;font-size:19px}
+@media (max-width:960px){.booking-grid{grid-template-columns:1fr}}
+
+/* services: one large plain list */
+.services{background:var(--ink);color:var(--white);padding-block:clamp(96px,11vw,180px)}
+.services-head{display:grid;grid-template-columns:7fr 5fr;gap:clamp(24px,4vw,80px);align-items:end}
+.services-head p{font-size:var(--size-statement);line-height:1.3;font-weight:500;max-width:30ch;color:#D9D9D9}
+.svc{list-style:none;margin-top:clamp(48px,5vw,80px)}
+.svc li{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:8px 40px;align-items:baseline;padding-block:clamp(14px,1.4vw,22px);transition:color .2s var(--ease),padding .2s var(--ease)}
+.svc li + li{border-top:6px solid #1E1E1E}
+.svc li:hover{color:var(--red)}
+.svc h3{font-weight:900;font-size:clamp(32px,4.4vw,72px);letter-spacing:-.045em;line-height:.95}
+.svc p{color:#CFCFCF;font-size:17px}
+.svc-figure{margin-top:clamp(48px,5vw,80px);display:grid;grid-template-columns:5fr 7fr;gap:clamp(24px,4vw,80px);align-items:center}
+.svc-figure figure{transform:rotate(3deg);background:#1E1E1E}
+.svc-figure img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.svc-figure p{font-size:var(--size-statement);line-height:1.3;font-weight:500;max-width:28ch}
+.svc-figure small{display:block;margin-top:14px;font-size:var(--size-small);color:#BDBDBD}
+@media (max-width:860px){.services-head,.svc-figure{grid-template-columns:1fr}.svc li{grid-template-columns:1fr}}
+
+/* masters: photo bleeding off two edges with caption bar */
+.masters{position:relative;margin-top:0}
+.masters figure{position:relative}
+.masters img{width:100%;height:clamp(420px,62vw,860px);object-fit:cover;object-position:50% 45%}
+.masters .bar{position:relative;margin-top:calc(-1 * clamp(140px,14vw,220px));margin-left:var(--margin);max-width:min(980px,calc(100% - 2 * var(--margin)));background:var(--red);color:var(--ink);padding:clamp(24px,3vw,48px)}
+.masters .bar h2{max-width:14ch}
+.masters .bar p{margin-top:20px;font-size:clamp(18px,1.4vw,21px)}
+.names{list-style:none;display:flex;flex-wrap:wrap;gap:8px;margin-top:28px}
+.names li{background:var(--ink);color:var(--white);padding:12px 16px;font-weight:500;font-size:16px}
+.names b{font-weight:700}
+.masters .credit{position:absolute;right:var(--margin);top:16px;font-size:13px;color:var(--white);background:rgba(10,10,10,.6);padding:6px 10px}
+
+/* contacts */
+.contacts{background:var(--blue);color:var(--white);margin-top:var(--gap);padding-block:clamp(96px,11vw,180px)}
+.contacts-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,96px);align-items:start}
+.address{font-weight:900;font-size:clamp(34px,4.4vw,72px);letter-spacing:-.045em;line-height:.95;margin-top:36px;max-width:16ch}
+.landmark{margin-top:24px;font-size:clamp(18px,1.4vw,21px);max-width:40ch}
+.contacts dl{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px;margin-top:48px}
+.contacts dt{font-weight:500;font-size:var(--size-small);color:#C9CEFF}
+.contacts dd{font-size:clamp(20px,1.6vw,25px);font-weight:700;margin-top:4px}
+.contacts dd a{text-decoration:none}
+.contacts dd a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px}
+.contacts figure{transform:rotate(-3deg);background:var(--navy);margin-top:24px}
+.contacts figure img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% 50%}
+.contacts figcaption{background:var(--white);color:var(--ink);padding:10px 14px;font-size:var(--size-small);font-weight:500}
+@media (max-width:960px){.contacts-grid{grid-template-columns:1fr}.contacts figure{max-width:440px}}
+@media (max-width:520px){.contacts dl{grid-template-columns:1fr}}
+
+/* footer */
+footer{background:var(--ink);color:var(--white);padding-block:clamp(72px,8vw,120px) 36px}
+.footer-name{font-weight:900;font-size:clamp(64px,19vw,320px);letter-spacing:-.065em;line-height:.8}
+.footer-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:56px;font-size:var(--size-small);color:#BDBDBD}
+.footer-row p{max-width:62ch}
+.footer-row a{color:var(--white)}
+@media (max-width:860px){.footer-row{grid-template-columns:1fr}}
+
+/* phone action bar */
+.mobile-bar{display:none}
+@media (max-width:860px){
+  .mobile-bar{display:grid;grid-template-columns:1fr 1fr;gap:0;position:fixed;left:0;right:0;bottom:0;padding-bottom:env(safe-area-inset-bottom);background:var(--ink);z-index:10}
+  .mobile-bar .btn{min-height:58px;padding:0 12px;font-size:17px}
+  footer{padding-bottom:100px}
+}
+
+/* motion */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .65s var(--ease),transform .65s var(--ease);transition-delay:var(--d,0ms)}
+.js .reveal.in{opacity:1;transform:none}
+.js .tilt{opacity:0;transform:rotate(0deg) translateY(40px);transition:opacity .8s var(--ease),transform 1s var(--ease)}
+.js .tilt.in{opacity:1}
+.js .hero-photo.tilt.in{transform:rotate(-4deg)}
+.js .svc-figure figure.tilt.in{transform:rotate(3deg)}
+.js .contacts figure.tilt.in{transform:rotate(-3deg)}
+.js .masters img{transform:scale(1.08);transition:transform 1.6s var(--ease)}
+.js .masters.in img{transform:scale(1)}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal,.js .tilt{opacity:1;transition:none}
+  .js .reveal{transform:none}
+  .js .hero-photo.tilt{transform:rotate(-4deg)}
+  .js .svc-figure figure.tilt{transform:rotate(3deg)}
+  .js .contacts figure.tilt{transform:rotate(-3deg)}
+  .js .marquee-track{animation:none}
+  .js .masters img{transform:none;transition:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <header class="wrap">
+    <nav class="nav" aria-label="Основная навигация" data-kk-aria="Негізгі мәзір">
+      <a class="wordmark" href="#top">Garage</a>
+      <ul class="nav-links">
+        <li><a href="#booking" data-kk="Жазылу">Запись</a></li>
+        <li><a href="#services" data-kk="Қызметтер">Услуги</a></li>
+        <li><a href="#sayings" data-kk="Пікірлер">Отзывы</a></li>
+        <li><a href="#contacts" data-kk="Байланыс">Контакты</a></li>
+      </ul>
+      <div class="nav-right">
+        <div class="lang" role="group" aria-label="Язык сайта">
+          <button type="button" data-lang="ru" aria-pressed="true">RU</button>
+          <button type="button" data-lang="kk" aria-pressed="false">ҚАЗ</button>
+        </div>
+        <a class="btn btn-red call" href="tel:+77016499344">+7 701 649 93 44</a>
+      </div>
+    </nav>
+  </header>
+</div>
+
+<main id="top">
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="wrap hero-grid">
+      <div>
+        <h1 id="hero-title" class="reveal" data-kk="Себебін<br>табамыз">Найдём<br>причину</h1>
+        <p class="lead reveal" style="--d:90ms" data-kk="Ақсайдағы Garage автосервисі: жүріс бөлігі, автоэлектрика, развал-схождение, рульдік рейкалар және шиномонтаж бір жерде.">Автосервис Garage в Аксае: ходовая, электрика, развал-схождение, рулевые рейки и шиномонтаж в одном месте.</p>
+        <div class="hero-actions reveal" style="--d:170ms">
+          <a class="btn btn-red" href="#booking" data-kk="WhatsApp арқылы жазылу">Записаться в WhatsApp</a>
+          <a class="btn btn-white" href="tel:+77016499344" data-kk="Қоңырау шалу">Позвонить</a>
+        </div>
+      </div>
+      <div class="hero-side">
+        <div class="score reveal" style="--d:240ms">
+          <strong>5,0</strong>
+          <span data-kk="2ГИС-те 131 баға<br><a href=&quot;https://2gis.kz/almaty/firm/70000001028863710/tab/reviews&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;>Пікірлерді оқу</a>">в 2ГИС, 131 оценка<br><a href="https://2gis.kz/almaty/firm/70000001028863710/tab/reviews" target="_blank" rel="noopener">Читать отзывы</a></span>
+        </div>
+        <figure class="hero-photo tilt" style="--d:120ms">
+          <img src="img/alignment.jpg" alt="Чёрный седан Lada Vesta на стенде развал-схождения" data-kk-alt="Развал-схождение стендіндегі қара Lada Vesta" width="1624" height="875" fetchpriority="high">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Ходовая</span><span>Жүріс бөлігі</span><span>Электрика</span><span>Развал-схождение</span><span>Рульдік рейка</span><span>Шиномонтаж</span><span>Детейлинг</span><span>Май ауыстыру</span><span>Диагностика</span><span>Кондиционер</span><span>Автоәйнек</span><span>Рулевые рейки</span>
+      <span>Ходовая</span><span>Жүріс бөлігі</span><span>Электрика</span><span>Развал-схождение</span><span>Рульдік рейка</span><span>Шиномонтаж</span><span>Детейлинг</span><span>Май ауыстыру</span><span>Диагностика</span><span>Кондиционер</span><span>Автоәйнек</span><span>Рулевые рейки</span>
+    </div>
+  </div>
+
+  <section id="sayings" class="wrap sayings" aria-labelledby="sayings-title">
+    <div class="sayings-head">
+      <h2 id="sayings-title" class="reveal" data-kk="Клиенттер не дейді">Что говорят клиенты</h2>
+      <p class="reveal" style="--d:80ms" data-kk="2ГИС-тегі пікірлерден алынған сөздер. Клиенттер орысша да, қазақша да жазады.">Слова из отзывов в 2ГИС. Клиенты пишут и по-русски, и по-казахски.</p>
+    </div>
+    <div class="panels">
+      <div class="panel p1 reveal">
+        <q>«…нашёл причину утечки антифриза на 222 мерсе, полгода никто не мог найти»</q>
+        <cite data-kk="Timur A., орысша жазылған">Timur A.</cite>
+      </div>
+      <div class="panel p2 reveal" style="--d:70ms">
+        <q>«Мастерлері мықты»</q>
+        <cite data-kk="Саттыбек К.">Саттыбек К., по-казахски: «мастера сильные»</cite>
+      </div>
+      <div class="panel p5 big reveal" style="--d:140ms">
+        <strong>5,0</strong>
+        <span data-kk="2ГИС-те 131 баға">131 оценка в 2ГИС</span>
+      </div>
+      <div class="panel p3 reveal">
+        <q>«…не накидывают лишнего, всё по факту сделали»</q>
+        <cite data-kk="Жалгас К., орысша жазылған">Жалгас К.</cite>
+      </div>
+      <div class="panel p4 reveal" style="--d:70ms">
+        <q>«Делал рулевую рейку… цена хорошая и полгода гарантии»</q>
+        <cite data-kk="Бауыржан Х., орысша жазылған">Бауыржан Х.</cite>
+      </div>
+    </div>
+    <a class="btn btn-black src reveal" href="https://2gis.kz/almaty/firm/70000001028863710/tab/reviews" target="_blank" rel="noopener" data-kk="2ГИС-тегі барлық пікірлер">Все отзывы в 2ГИС</a>
+  </section>
+
+  <section id="booking" class="booking" aria-labelledby="booking-title">
+    <div class="wrap booking-grid">
+      <div>
+        <h2 id="booking-title" class="reveal" data-kk="WhatsApp арқылы жазылу">Запись в WhatsApp</h2>
+        <p class="intro reveal" style="--d:80ms" data-kk="Не істеу керегін белгілеңіз, біз WhatsApp-та дайын хабарлама аламыз. Хабарлама сайт тілінде жіберіледі: орысша немесе қазақша.">Отметьте, что нужно сделать, и мы получим готовое сообщение в WhatsApp. Сообщение уйдёт на языке сайта: по-русски или по-казахски.</p>
+        <p class="alt reveal" style="--d:160ms"><span data-kk="Дауыспен ыңғайлырақ па?">Удобнее голосом?</span><br><a href="tel:+77016499344">+7 701 649 93 44</a></p>
+      </div>
+      <form class="sheet reveal" style="--d:120ms" id="order-form" action="https://wa.me/77016499344" method="get" target="_blank">
+        <fieldset class="field">
+          <legend data-kk="Не істеу керек">Что сделать</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="work" value="hodovaya" checked><span data-kk="Жүріс бөлігі">Ходовая</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="electric"><span data-kk="Автоэлектрика">Электрика</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="alignment"><span>Развал-схождение</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="rack"><span data-kk="Рульдік рейка">Рулевая рейка</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="tires"><span>Шиномонтаж</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="diag"><span>Диагностика</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="oil"><span data-kk="Май ауыстыру">Замена масла</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="ac"><span>Кондиционер</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="detail"><span>Детейлинг</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label class="lbl" for="car" data-kk="Көлік: марка, модель, жыл">Машина: марка, модель, год</label>
+          <input class="text-input" id="car" name="car" type="text" placeholder="Например, Toyota Camry 2018" data-kk-placeholder="Мысалы, Toyota Camry 2018" autocomplete="off">
+        </div>
+        <fieldset class="field">
+          <legend data-kk="Қашан ыңғайлы">Когда удобно</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="day" value="today"><span data-kk="Бүгін">Сегодня</span></label>
+            <label class="chip"><input type="radio" name="day" value="tomorrow" checked><span data-kk="Ертең">Завтра</span></label>
+            <label class="chip"><input type="radio" name="day" value="week"><span data-kk="Осы аптада">На неделе</span></label>
+          </div>
+        </fieldset>
+        <div class="msg" aria-live="polite">
+          <div class="msg-label" data-kk="Сіздің хабарламаңыз">Ваше сообщение</div>
+          <p id="preview-text">Здравствуйте! Хочу записаться в Garage auto service.
+Что сделать: ходовая.
+Когда удобно: завтра.</p>
+        </div>
+        <input type="hidden" name="text" id="wa-text" value="Здравствуйте! Хочу записаться в Garage auto service. Что сделать: ходовая. Когда удобно: завтра.">
+        <button class="btn btn-blue" type="submit" data-kk="WhatsApp-қа жіберу">Отправить в WhatsApp</button>
+      </form>
+    </div>
+  </section>
+
+  <section id="services" class="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <div class="services-head">
+        <h2 id="services-title" class="reveal" data-kk="Бәрі бір гаражда">Всё в одном гараже</h2>
+        <p class="reveal" style="--d:80ms" data-kk="Жүріс бөлігі, электрика, развал және шиномонтаж бір мекенжайда. Көлікті қала бойынша айдаудың қажеті жоқ.">Ходовая, электрика, развал и шиномонтаж по одному адресу. Возить машину по городу не придётся.</p>
+      </div>
+      <ul class="svc">
+        <li class="reveal"><h3 data-kk="Жүріс бөлігі">Ходовая</h3><p data-kk="Пневмоподвеска, тіректер, тежегіш дискілерін жону.">Пневмоподвеска, стойки, проточка тормозных дисков.</p></li>
+        <li class="reveal"><h3 data-kk="Автоэлектрика">Электрика</h3><p data-kk="Генератор, стартер, аккумулятор, электрондық жүйелер. Электрик кешке дейін жұмыс істейді.">Генератор, стартер, аккумулятор, электронные системы. Электрик работает допоздна.</p></li>
+        <li class="reveal"><h3>Развал-схождение</h3><p data-kk="Ходовая жөндегеннен кейін және жолға шығар алдында.">После ремонта ходовой и перед дальней дорогой.</p></li>
+        <li class="reveal"><h3 data-kk="Рульдік рейкалар">Рулевые рейки</h3><p data-kk="Жөндеу, клиенттердің айтуынша жарты жыл кепілдікпен.">Ремонт, по словам клиентов, с гарантией полгода.</p></li>
+        <li class="reveal"><h3>Шиномонтаж</h3><p data-kk="Колодкаларды ауыстыру, тесікті жөндеу, дискілерді түзету.">Замена колодок, ремонт порезов, правка и прокатка дисков.</p></li>
+        <li class="reveal"><h3>Диагностика</h3><p data-kk="Компьютерлік диагностика, кондиционерге қызмет көрсету, автоәйнек.">Компьютерная диагностика, обслуживание кондиционера, автостекло.</p></li>
+        <li class="reveal"><h3 data-kk="Май және детейлинг">Масло и детейлинг</h3><p data-kk="Аппараттық май ауыстыру және көлікті тазалау.">Аппаратная замена масла и уход за машиной.</p></li>
+      </ul>
+      <div class="svc-figure">
+        <figure class="tilt"><img src="img/battery.jpg" alt="Мультиметр на автомобильном аккумуляторе" data-kk-alt="Көлік аккумуляторындағы мультиметр" width="1024" height="768" loading="lazy"></figure>
+        <p class="reveal" data-kk="Күтіп отырғанда клиенттерге Wi-Fi және кафе бар. Төлем картамен, қолма-қол, аударым немесе QR арқылы.">Пока ждёте, для клиентов есть Wi-Fi и кафе. Оплата картой, наличными, переводом или по QR.<small data-kk="Аккумуляторды тексеру">Проверка аккумулятора</small></p>
+      </div>
+    </div>
+  </section>
+
+  <section class="masters reveal" aria-labelledby="masters-title">
+    <figure>
+      <img src="img/wrench.jpg" alt="Мастер откручивает колесо пневмогайковёртом" data-kk-alt="Шебер пневмогайковертпен дөңгелекті бұрап жатыр" width="1024" height="683" loading="lazy">
+    </figure>
+    <div class="bar">
+      <h2 id="masters-title" data-kk="Шеберлерді атымен біледі">Мастеров знают по именам</h2>
+      <p data-kk="Пікірлерде клиенттер кімге алғыс айтатынын жазады:">В отзывах клиенты пишут, кому сказать спасибо:</p>
+      <ul class="names">
+        <li><b>Санжар</b> <span data-kk="электрик, 2-бокс">электрик, 2-й бокс</span></li>
+        <li><b>Тимур</b> <span data-kk="7-бокс">7-й бокс</span></li>
+        <li><b>Саня</b> <span data-kk="жүріс бөлігі">ходовая</span></li>
+        <li><b>Адлет</b> <span data-kk="кеңес береді">консультирует</span></li>
+        <li><b>Баглан</b> <span data-kk="әкімші">администратор</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contacts" class="contacts" aria-labelledby="contacts-title">
+    <div class="wrap contacts-grid">
+      <div>
+        <h2 id="contacts-title" class="reveal" data-kk="Қалай жетуге болады">Как доехать</h2>
+        <p class="address reveal" style="--d:80ms" data-kk="Ақсай-1а, 2а, Әуезов ауданы">Аксай-1а, 2а, Ауэзовский район</p>
+        <p class="landmark reveal" style="--d:140ms" data-kk="Car City сауда орталығынан 300 метр. Жанында 11 тұрақ бар.">В 300 метрах от ТЦ Car City. Рядом 11 парковок.</p>
+        <dl class="reveal" style="--d:180ms">
+          <div><dt data-kk="Телефон және WhatsApp">Телефон и WhatsApp</dt><dd><a href="tel:+77016499344">+7 701 649 93 44</a></dd></div>
+          <div><dt data-kk="Екінші нөмір, WhatsApp">Второй номер, WhatsApp</dt><dd><a href="tel:+77711051365">+7 771 105 13 65</a></dd></div>
+          <div><dt data-kk="Жұмыс уақыты">Часы работы</dt><dd data-kk="09:00-ден бастап">С 09:00</dd></div>
+          <div><dt data-kk="Төлем">Оплата</dt><dd data-kk="Карта, қолма-қол, QR">Карта, наличные, QR</dd></div>
+        </dl>
+        <div class="contact-actions reveal" style="--d:220ms">
+          <a class="btn btn-red" href="https://2gis.kz/almaty/firm/70000001028863710" target="_blank" rel="noopener" data-kk="2ГИС-те маршрут">Маршрут в 2ГИС</a>
+          <a class="btn btn-white" href="#booking" data-kk="Жазылу">Записаться</a>
+        </div>
+      </div>
+      <figure class="tilt">
+        <img src="img/jack.jpg" alt="Домкрат поднимает машину у колеса" data-kk-alt="Домкрат көлікті дөңгелек жанынан көтеріп тұр" width="1024" height="683" loading="lazy">
+        <figcaption data-kk="Дөңгелек ауыстыру алдында">Перед заменой колеса</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-name" aria-hidden="true">Garage</p>
+    <div class="footer-row">
+      <p data-kk="Garage auto service автосервисіне арналған сайттың демо-макеті. Мекенжай, телефондар, қызметтер мен пікірлер 2ГИС-тегі ашық карточкадан алынған. Clockwork жасаған.">Демо-макет сайта для автосервиса Garage auto service. Адрес, телефоны, услуги и отзывы взяты из открытой карточки в 2ГИС. Сделано в <a href="https://clockwork-yr.github.io/" target="_blank" rel="noopener">Clockwork</a>.</p>
+      <p>Фото: «LADA Vesta Sport, Wheel alignment», Dmitry Racer, CC BY-SA 4.0, Wikimedia Commons; «Tire technician using a compressed air impact wrench» и «Tire technician lifting a car with a car jack», Ivan Radic, CC BY 2.0, Flickr; «Dead 12 Volt Car Battery», techmsg, CC BY 2.0, Flickr.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-red" href="#booking" data-kk="Жазылу">Записаться</a>
+  <a class="btn btn-black" href="tel:+77016499344" data-kk="Қоңырау шалу">Позвонить</a>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var lang = 'ru';
+  var WORK = {
+    ru:{hodovaya:'ходовая',electric:'электрика',alignment:'развал-схождение',rack:'рулевая рейка',tires:'шиномонтаж',diag:'диагностика',oil:'замена масла',ac:'кондиционер',detail:'детейлинг'},
+    kk:{hodovaya:'жүріс бөлігі',electric:'автоэлектрика',alignment:'развал-схождение',rack:'рульдік рейка',tires:'шиномонтаж',diag:'диагностика',oil:'май ауыстыру',ac:'кондиционер',detail:'детейлинг'}
+  };
+  var DAY = {ru:{today:'сегодня',tomorrow:'завтра',week:'на этой неделе'},kk:{today:'бүгін',tomorrow:'ертең',week:'осы аптада'}};
+  var TXT = {
+    ru:{hello:'Здравствуйте! Хочу записаться в Garage auto service.',car:'Машина: ',work:'Что сделать: ',day:'Когда удобно: '},
+    kk:{hello:'Сәлеметсіз бе! Garage auto service-ке жазылғым келеді.',car:'Көлік: ',work:'Не істеу керек: ',day:'Қашан ыңғайлы: '}
+  };
+  var form = document.getElementById('order-form');
+  var preview = document.getElementById('preview-text');
+  var hidden = document.getElementById('wa-text');
+  function build(){
+    var t = TXT[lang], lines = [t.hello];
+    var car = form.car.value.trim();
+    if (car) lines.push(t.car + car + '.');
+    var works = Array.prototype.map.call(form.querySelectorAll('input[name="work"]:checked'), function(i){ return WORK[lang][i.value]; });
+    if (works.length) lines.push(t.work + works.join(', ') + '.');
+    var d = form.querySelector('input[name="day"]:checked');
+    if (d) lines.push(t.day + DAY[lang][d.value] + '.');
+    preview.textContent = lines.join('\n');
+    hidden.value = lines.join('\n');
+  }
+  form.addEventListener('input', build);
+  form.addEventListener('change', build);
+  form.addEventListener('submit', function(e){
+    e.preventDefault(); build();
+    window.open('https://wa.me/77016499344?text=' + encodeURIComponent(hidden.value), '_blank', 'noopener');
+  });
+
+  function setLang(next){
+    lang = next;
+    document.documentElement.lang = next === 'kk' ? 'kk' : 'ru';
+    document.querySelectorAll('[data-kk]').forEach(function(el){
+      if (el.dataset.ru === undefined) el.dataset.ru = el.innerHTML;
+      el.innerHTML = next === 'kk' ? el.dataset.kk : el.dataset.ru;
+    });
+    document.querySelectorAll('[data-kk-alt]').forEach(function(el){
+      if (el.dataset.ruAlt === undefined) el.dataset.ruAlt = el.alt;
+      el.alt = next === 'kk' ? el.dataset.kkAlt : el.dataset.ruAlt;
+    });
+    document.querySelectorAll('[data-kk-placeholder]').forEach(function(el){
+      if (el.dataset.ruPh === undefined) el.dataset.ruPh = el.placeholder;
+      el.placeholder = next === 'kk' ? el.dataset.kkPlaceholder : el.dataset.ruPh;
+    });
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.lang === next)); });
+    document.title = next === 'kk' ? 'Garage auto service — Ақсайдағы автосервис, Алматы' : 'Garage auto service — автосервис в Аксае, Алматы';
+    try { localStorage.setItem('garage-lang', next); } catch(e){}
+    build();
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){ b.addEventListener('click', function(){ setLang(b.dataset.lang); }); });
+  var saved = null;
+  try { saved = localStorage.getItem('garage-lang'); } catch(e){}
+  if (saved === 'kk') setLang('kk'); else build();
+
+  var items = document.querySelectorAll('.reveal, .tilt');
+  if (!('IntersectionObserver' in window)) { items.forEach(function(el){ el.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){ io.observe(el); });
+})();
+</script>
+</body>
+</html>
