@@ -1,0 +1,515 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PushStart — автосервис в Турксибе, Алматы</title>
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="PushStart — ремонт на виду. Демо сайта">
+<meta property="og:description" content="Запись на время в WhatsApp, фото и видео каждого этапа ремонта. Автосервис в Турксибе, Алматы.">
+<meta property="og:image" content="https://clockwork-yr.github.io/demo/pushstart/img/start-button.jpg">
+<meta name="description" content="Автосервис PushStart в Турксибском районе Алматы: двигатели, ходовая, пневмоподвеска, диагностика для любых марок. Работаем по записи, фото и видео каждого этапа в WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#18191B;
+  --surface:#222427;
+  --surface-2:#2C2F33;
+  --ink:#EFF0F1;
+  --muted:#A6A8AD;
+  --accent:#FF4A1F;
+  --accent-press:#FF6A45;
+  --accent-ink:#18191B;
+  --paper:#EFF0F1;
+  --paper-2:#E1E3E6;
+  --paper-ink:#18191B;
+  --paper-muted:#55585E;
+  --margin:clamp(16px,3vw,40px);
+  --gap:clamp(120px,13vw,220px);
+  --display:"Unbounded",system-ui,sans-serif;
+  --text:"Manrope",system-ui,sans-serif;
+  --size-hero:clamp(44px,6.6vw,104px);
+  --size-h2:clamp(30px,3.9vw,60px);
+  --size-statement:clamp(21px,2.1vw,32px);
+  --size-body:clamp(17px,1.2vw,19px);
+  --size-small:15px;
+  --ease:cubic-bezier(.2,.7,.2,1);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--ground);color:var(--ink);font-family:var(--text);font-size:var(--size-body);line-height:1.55;font-variant-numeric:tabular-nums}
+main{overflow-x:clip}
+.svc li > *{align-self:start}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+::selection{background:var(--accent);color:var(--accent-ink)}
+.wrap{padding-inline:var(--margin);max-width:1520px;margin-inline:auto}
+h1,h2{font-family:var(--display);font-weight:700;letter-spacing:-.035em;line-height:1.02}
+h2{font-size:var(--size-h2);max-width:16ch}
+h3{font-family:var(--display);font-weight:600;font-size:clamp(19px,1.55vw,24px);letter-spacing:-.02em;line-height:1.2}
+p{max-width:60ch}
+
+/* the motif: a round start button */
+.disc{border-radius:50%;overflow:hidden}
+
+/* buttons: always fully round */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;min-height:56px;padding:0 28px;border-radius:999px;font:700 17px/1 var(--text);text-decoration:none;border:0;cursor:pointer;transition:transform .18s var(--ease),background-color .18s var(--ease),color .18s var(--ease)}
+.btn:active{transform:scale(.96)}
+.btn-accent{background:var(--accent);color:var(--accent-ink)}
+.btn-accent:hover{background:var(--accent-press)}
+.btn-quiet{background:var(--surface-2);color:var(--ink)}
+.btn-quiet:hover{background:#383C41}
+.on-paper .btn-quiet{background:var(--paper-2);color:var(--paper-ink)}
+.on-paper .btn-quiet:hover{background:#D3D6DA}
+.btn-dark{background:var(--ground);color:var(--ink)}
+.btn-dark:hover{background:#2A2C30}
+
+/* nav */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;padding-block:20px;position:relative;z-index:3}
+.wordmark{display:inline-flex;align-items:center;gap:10px;font-family:var(--display);font-weight:700;font-size:20px;letter-spacing:-.03em;text-decoration:none}
+.wordmark i{width:14px;height:14px;border-radius:50%;background:var(--accent);display:block}
+.nav-links{display:flex;gap:28px;list-style:none;font-weight:500;font-size:16px}
+.nav-links a{text-decoration:none;transition:color .15s var(--ease)}
+.nav-links a:hover{color:var(--accent)}
+.nav .btn{min-height:46px;padding:0 20px;font-size:15px}
+@media (max-width:960px){.nav-links{display:none}}
+
+/* hero */
+.hero{position:relative;min-height:min(92vh,900px);display:grid;grid-template-columns:6fr 6fr;align-items:center;overflow:visible}
+.hero-text{position:relative;z-index:2;padding-block:clamp(24px,5vw,72px)}
+.hero h1{font-size:var(--size-hero);max-width:7.5ch}
+.hero .lead{margin-top:36px;font-size:clamp(18px,1.45vw,22px);line-height:1.5;max-width:36ch}
+.hero-actions{display:flex;flex-wrap:wrap;align-items:center;gap:14px;margin-top:40px}
+.rating{display:flex;align-items:center;gap:16px;margin-top:44px}
+.rating .dot{width:64px;height:64px;border-radius:50%;background:var(--surface-2);display:grid;place-items:center;font-family:var(--display);font-weight:700;font-size:19px;letter-spacing:-.03em}
+.rating span{font-size:var(--size-small);color:var(--muted);line-height:1.45}
+.rating a{color:var(--ink)}
+.hero-disc{position:absolute;z-index:1;right:calc(-1 * min(26vh,240px));top:50%;width:min(112vh,1040px);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.hero-disc figure{width:68%;aspect-ratio:1;border-radius:50%;overflow:hidden;background:var(--surface);outline:clamp(10px,1.4vw,18px) solid var(--ground)}
+.hero-disc img{width:100%;height:100%;object-fit:cover;object-position:50% 56%;transform:scale(1.55)}
+.hero-disc figcaption{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (max-width:960px){
+  .hero{grid-template-columns:1fr;min-height:0;padding-top:calc(min(112vw,680px) - min(10vw,60px) - 16px)}
+  .nav .btn{display:none}
+  .hero-disc{top:calc(-1 * min(10vw,60px));right:calc(-1 * min(22vw,140px));width:min(112vw,680px);transform:none}
+  .hero-text{padding-block:8px 24px}
+}
+
+/* booking: the live thing */
+.booking{margin-top:var(--gap)}
+.booking-grid{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:start}
+.booking .intro{margin-top:28px;color:var(--muted);font-size:clamp(17px,1.3vw,20px)}
+.booking .alt{margin-top:28px}
+.booking .alt a{font-family:var(--display);font-weight:600;font-size:clamp(20px,1.8vw,27px);letter-spacing:-.02em;text-decoration:none}
+.booking .alt a:hover{color:var(--accent)}
+.sheet{background:var(--surface);padding:clamp(22px,3vw,44px);border-radius:28px}
+.field{border:0;margin-bottom:30px}
+.field legend,.field .lbl{display:block;font-weight:700;font-size:17px;margin-bottom:14px}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;inset:0;cursor:pointer}
+.chip span{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border-radius:999px;background:var(--surface-2);font-weight:500;font-size:16px;transition:background-color .15s var(--ease),color .15s var(--ease),transform .15s var(--ease)}
+.chip:hover span{background:#383C41}
+.chip input:checked + span{background:var(--ink);color:var(--ground);font-weight:700}
+.chip input:focus-visible + span{outline:3px solid var(--accent);outline-offset:3px}
+.chip input:active + span{transform:scale(.95)}
+.text-input{width:100%;min-height:56px;padding:0 20px;border-radius:999px;border:0;background:var(--surface-2);color:var(--ink);font:500 17px var(--text)}
+.text-input::placeholder{color:#9EA1A6}
+.order-out{display:grid;grid-template-columns:1fr auto;gap:clamp(20px,3vw,40px);align-items:center;margin-top:8px}
+.ticket{background:var(--paper);color:var(--paper-ink);border-radius:24px;padding:22px 24px}
+.ticket-label{font-weight:700;font-size:15px;color:var(--paper-muted);margin-bottom:8px}
+.ticket p{white-space:pre-line;font-size:17px;line-height:1.5;max-width:none}
+.start{position:relative;width:clamp(132px,12vw,164px);aspect-ratio:1;border-radius:50%;border:0;background:var(--accent);color:var(--accent-ink);outline:10px solid var(--ground);outline-offset:-1px;cursor:pointer;display:grid;place-items:center;text-align:center;font:700 clamp(15px,1.15vw,17px)/1.2 var(--text);transition:transform .16s var(--ease),background-color .16s var(--ease)}
+.start b{display:block;font-family:var(--display);font-weight:700;font-size:clamp(20px,1.7vw,25px);letter-spacing:-.03em;margin-bottom:4px}
+.start:hover{background:var(--accent-press)}
+.start:active,.start.pressed{transform:scale(.9)}
+.start::after{content:"";position:absolute;inset:-22px;border-radius:50%;border:3px solid var(--accent);opacity:0;pointer-events:none}
+.js .start.pulse::after{animation:ring 2.6s var(--ease) infinite}
+@keyframes ring{0%{opacity:.7;transform:scale(.9)}70%{opacity:0;transform:scale(1.12)}100%{opacity:0}}
+@media (max-width:960px){.booking-grid{grid-template-columns:1fr}}
+@media (max-width:560px){.order-out{grid-template-columns:1fr;justify-items:center}.ticket{width:100%}}
+
+/* process */
+.process{background:var(--paper);color:var(--paper-ink);margin-top:var(--gap);padding-block:clamp(96px,11vw,180px)}
+.process-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,96px);align-items:start}
+.process h2{max-width:13ch}
+.process .intro{margin-top:24px;font-size:var(--size-statement);line-height:1.35;font-weight:500;letter-spacing:-.01em;max-width:28ch}
+.steps{list-style:none;margin-top:clamp(48px,5vw,80px);display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,3.4vw,56px) clamp(24px,3vw,48px)}
+.steps li{position:relative;padding-left:44px}
+.steps li::before{content:"";position:absolute;left:0;top:.15em;width:24px;height:24px;border-radius:50%;background:var(--accent)}
+.steps li:nth-child(even)::before{background:var(--paper-ink)}
+.steps p{margin-top:10px;color:var(--paper-muted);font-size:17px}
+.process-figure{position:sticky;top:32px}
+.process-figure .disc{aspect-ratio:1;background:var(--paper-2)}
+.process-figure img{width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.process-figure figcaption{margin-top:14px;font-size:var(--size-small);color:var(--paper-muted);max-width:34ch}
+@media (max-width:960px){.process-grid{grid-template-columns:1fr}.process-figure{position:static;max-width:520px}}
+@media (max-width:640px){.steps{grid-template-columns:1fr}}
+
+/* services */
+.services{margin-top:var(--gap);display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:start}
+.services-figure{position:relative}
+.services-figure .disc{width:100%;aspect-ratio:1;background:var(--surface)}
+.services-figure img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.services-figure figcaption{margin-top:14px;font-size:var(--size-small);color:var(--muted)}
+.svc{list-style:none;margin-top:clamp(40px,4vw,64px)}
+.svc li{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:12px 32px;padding-block:26px;border-radius:20px;transition:background-color .2s var(--ease),padding .2s var(--ease)}
+.svc li + li{margin-top:4px}
+.svc li:nth-child(odd){background:var(--surface);padding-inline:24px}
+.svc li:nth-child(even){padding-inline:24px}
+.svc h3{color:var(--ink)}
+.svc p{color:var(--muted);font-size:17px}
+.services .after{margin-top:32px}
+@media (max-width:960px){.services{grid-template-columns:1fr}.services-figure{max-width:440px}}
+@media (max-width:640px){.svc li{grid-template-columns:1fr}}
+
+/* brands band */
+.brands{background:var(--accent);color:var(--accent-ink);margin-top:var(--gap);padding-block:clamp(88px,10vw,160px)}
+.brands-head{display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:end}
+.brands-head p{font-size:var(--size-statement);line-height:1.35;font-weight:500;letter-spacing:-.01em;max-width:30ch}
+.brand-list{list-style:none;display:flex;flex-wrap:wrap;align-items:center;gap:6px 0;margin-top:clamp(48px,5vw,80px);font-family:var(--display);font-weight:700;font-size:clamp(22px,2.6vw,40px);letter-spacing:-.03em;line-height:1.25}
+.brand-list li{display:inline-flex;align-items:center}
+.brand-list li::after{content:"";width:.32em;height:.32em;border-radius:50%;background:var(--accent-ink);margin-inline:.45em;display:inline-block}
+.brand-list li:last-child::after{display:none}
+@media (max-width:860px){.brands-head{grid-template-columns:1fr}}
+
+/* reviews */
+.reviews{margin-top:var(--gap);display:grid;grid-template-columns:5fr 7fr;gap:clamp(32px,5vw,96px);align-items:start}
+.score{width:min(100%,420px);aspect-ratio:1;border-radius:50%;background:var(--surface);outline:clamp(12px,1.6vw,22px) solid var(--accent);outline-offset:-1px;display:grid;place-content:center;text-align:center}
+.score strong{font-family:var(--display);font-weight:700;font-size:clamp(84px,10vw,150px);letter-spacing:-.06em;line-height:.9}
+.score span{display:block;margin-top:14px;font-size:var(--size-small);color:var(--muted)}
+.quote-main{font-size:var(--size-statement);line-height:1.35;font-weight:500;letter-spacing:-.01em;max-width:32ch;margin-top:40px}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,3vw,44px);margin-top:48px}
+.quotes blockquote{background:var(--surface);border-radius:24px;padding:24px 26px}
+.quotes blockquote:last-child{grid-column:1/-1}
+.quotes p{font-size:17px}
+cite{display:block;margin-top:14px;font-style:normal;font-weight:700;font-size:var(--size-small);color:var(--muted)}
+.reviews .src{margin-top:40px}
+@media (max-width:960px){.reviews{grid-template-columns:1fr}.score{width:min(80vw,360px)}}
+@media (max-width:640px){.quotes{grid-template-columns:1fr}}
+
+/* contacts */
+.contacts{background:var(--paper);color:var(--paper-ink);margin-top:var(--gap);padding-block:clamp(96px,11vw,180px)}
+.contacts-grid{display:grid;grid-template-columns:7fr 5fr;gap:clamp(32px,5vw,96px);align-items:start}
+.address{font-family:var(--display);font-weight:700;font-size:clamp(26px,3vw,46px);letter-spacing:-.035em;line-height:1.1;margin-top:36px;max-width:20ch}
+.landmark{margin-top:20px;font-size:clamp(17px,1.3vw,20px)}
+.contacts dl{display:grid;grid-template-columns:1fr 1fr;gap:28px 32px;margin-top:48px}
+.contacts dt{font-weight:700;font-size:var(--size-small);color:var(--paper-muted)}
+.contacts dd{font-size:clamp(19px,1.5vw,23px);font-weight:500;margin-top:4px}
+.contacts dd a{text-decoration:none}
+.contacts dd a:hover{text-decoration:underline;text-underline-offset:4px}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px}
+.contacts-figure .disc{aspect-ratio:1;background:var(--paper-2)}
+.contacts-figure img{width:100%;height:100%;object-fit:cover;object-position:72% 50%}
+.contacts-figure figcaption{margin-top:14px;font-size:var(--size-small);color:var(--paper-muted)}
+@media (max-width:960px){.contacts-grid{grid-template-columns:1fr}.contacts-figure{max-width:440px}}
+@media (max-width:520px){.contacts dl{grid-template-columns:1fr}}
+
+/* footer */
+footer{padding-block:clamp(72px,8vw,120px) 36px}
+.footer-name{display:flex;align-items:center;gap:.12em;font-family:var(--display);font-weight:700;font-size:clamp(52px,13.4vw,212px);letter-spacing:-.06em;line-height:.9}
+.footer-name i{width:.62em;height:.62em;border-radius:50%;background:var(--accent);display:block;flex:none}
+.footer-row{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:56px;font-size:var(--size-small);color:var(--muted)}
+.footer-row p{max-width:62ch}
+.footer-row a{color:var(--ink)}
+@media (max-width:860px){.footer-row{grid-template-columns:1fr}}
+
+/* phone action bar */
+.mobile-bar{display:none}
+@media (max-width:860px){
+  .mobile-bar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:var(--ground);z-index:10}
+  .mobile-bar .btn{min-height:50px;padding:0 12px;font-size:16px}
+  footer{padding-bottom:104px}
+}
+
+/* motion */
+.js .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:var(--d,0ms)}
+.js .reveal.in{opacity:1;transform:none}
+.js .hero-disc{transform:translateY(-50%) scale(.82);opacity:0;transition:transform 1.2s var(--ease),opacity .9s var(--ease)}
+.js .hero-disc.in{transform:translateY(-50%) scale(1);opacity:1}
+.js .hero-disc img{transform:scale(1.9);transition:transform 1.8s var(--ease)}
+.js .hero-disc.in img{transform:scale(1.55)}
+.js .disc img{transition:transform 1.4s var(--ease)}
+.js .zoom .disc img{transform:scale(1.12)}
+.js .zoom.in .disc img{transform:scale(1)}
+@media (max-width:960px){
+  .js .hero-disc{transform:scale(.82)}
+  .js .hero-disc.in{transform:none}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .js .reveal,.js .hero-disc,.js .hero-disc.in{opacity:1;transition:none}
+  .js .reveal{transform:none}
+  .js .hero-disc img,.js .zoom .disc img{transition:none}
+  .js .start.pulse::after{animation:none}
+  .btn,.chip span,.start{transition:none}
+}
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <nav class="nav" aria-label="Основная навигация">
+    <a class="wordmark" href="#top"><i aria-hidden="true"></i>PushStart</a>
+    <ul class="nav-links">
+      <li><a href="#booking">Запись</a></li>
+      <li><a href="#process">Как работаем</a></li>
+      <li><a href="#services">Что ремонтируем</a></li>
+      <li><a href="#reviews">Отзывы</a></li>
+      <li><a href="#contacts">Контакты</a></li>
+    </ul>
+    <a class="btn btn-accent" href="tel:+77029062237">+7 702 906 22 37</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="wrap hero" aria-labelledby="hero-title">
+    <div class="hero-text">
+      <h1 id="hero-title" class="reveal">Ремонт<br> на виду</h1>
+      <p class="lead reveal" style="--d:90ms">Автосервис PushStart в Турксибе: двигатели, ходовая и диагностика для любых марок. Каждый этап снимаем на фото и видео и присылаем вам в WhatsApp.</p>
+      <div class="hero-actions reveal" style="--d:180ms">
+        <a class="btn btn-accent" href="#booking">Записаться на время</a>
+        <a class="btn btn-quiet" href="tel:+77029062237">Позвонить</a>
+      </div>
+      <div class="rating reveal" style="--d:260ms">
+        <div class="dot" aria-hidden="true">4,9</div>
+        <span>Оценка 4,9 в 2ГИС, 274 оценки<br><a href="https://2gis.kz/almaty/firm/70000001035168787/tab/reviews" target="_blank" rel="noopener">Читать отзывы</a></span>
+      </div>
+    </div>
+    <div class="hero-disc" aria-hidden="false">
+      <figure>
+        <img src="img/start-button.jpg" alt="Кнопка запуска двигателя Engine Start Stop крупным планом" width="1300" height="986" fetchpriority="high">
+        <figcaption>Кнопка Engine Start Stop</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="booking" class="wrap booking" aria-labelledby="booking-title">
+    <div class="booking-grid">
+      <div>
+        <h2 id="booking-title" class="reveal">Запись на время</h2>
+        <p class="intro reveal" style="--d:80ms">Мы работаем по предварительной записи, поэтому машину ждут, а не ставят в очередь. Выберите машину, работу и время: мы получим готовую заявку в WhatsApp и подтвердим запись.</p>
+        <p class="alt reveal" style="--d:160ms">Удобнее голосом?<br><a href="tel:+77029062237">+7 702 906 22 37</a></p>
+      </div>
+      <form class="sheet reveal" style="--d:120ms" id="order-form" action="https://wa.me/77029062237" method="get" target="_blank">
+        <fieldset class="field">
+          <legend>Машина</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="brand" value="Toyota" checked><span>Toyota</span></label>
+            <label class="chip"><input type="radio" name="brand" value="Lexus"><span>Lexus</span></label>
+            <label class="chip"><input type="radio" name="brand" value="Hyundai"><span>Hyundai</span></label>
+            <label class="chip"><input type="radio" name="brand" value="Kia"><span>Kia</span></label>
+            <label class="chip"><input type="radio" name="brand" value="Mercedes-Benz"><span>Mercedes-Benz</span></label>
+            <label class="chip"><input type="radio" name="brand" value=""><span>Другая</span></label>
+          </div>
+        </fieldset>
+        <div class="field">
+          <label class="lbl" for="model">Модель и год</label>
+          <input class="text-input" id="model" name="model" type="text" placeholder="Например, Camry 2018" autocomplete="off">
+        </div>
+        <fieldset class="field">
+          <legend>Что сделать</legend>
+          <div class="chips">
+            <label class="chip"><input type="checkbox" name="work" value="компьютерная диагностика"><span>Диагностика</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="двигатель"><span>Двигатель</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="ходовая или пневмоподвеска"><span>Ходовая и пневма</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="тормоза"><span>Тормоза</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="замена масла и ТО"><span>Масло и ТО</span></label>
+            <label class="chip"><input type="checkbox" name="work" value="система охлаждения"><span>Охлаждение</span></label>
+          </div>
+        </fieldset>
+        <fieldset class="field">
+          <legend>Когда удобно</legend>
+          <div class="chips">
+            <label class="chip"><input type="radio" name="day" value="сегодня"><span>Сегодня</span></label>
+            <label class="chip"><input type="radio" name="day" value="завтра" checked><span>Завтра</span></label>
+            <label class="chip"><input type="radio" name="day" value="послезавтра"><span>Послезавтра</span></label>
+            <label class="chip"><input type="radio" name="day" value="на этой неделе"><span>На неделе</span></label>
+          </div>
+          <div class="chips" style="margin-top:10px">
+            <label class="chip"><input type="radio" name="time" value="утром" checked><span>Утром</span></label>
+            <label class="chip"><input type="radio" name="time" value="днём"><span>Днём</span></label>
+            <label class="chip"><input type="radio" name="time" value="ближе к вечеру"><span>Ближе к вечеру</span></label>
+          </div>
+        </fieldset>
+        <div class="order-out">
+          <div class="ticket" aria-live="polite">
+            <div class="ticket-label">Ваша заявка</div>
+            <p id="preview-text">Здравствуйте! Хочу записаться в PushStart.
+Машина: Toyota.
+Когда удобно: завтра, утром.</p>
+          </div>
+          <button class="start" type="submit" id="start"><span><b>Старт</b>в WhatsApp</span></button>
+        </div>
+        <input type="hidden" name="text" id="wa-text" value="Здравствуйте! Хочу записаться в PushStart. Машина: Toyota. Когда удобно: завтра, утром.">
+      </form>
+    </div>
+  </section>
+
+  <section id="process" class="process on-paper" aria-labelledby="process-title">
+    <div class="wrap process-grid">
+      <div>
+        <h2 id="process-title" class="reveal">Как проходит ремонт</h2>
+        <p class="intro reveal" style="--d:80ms">Вы знаете, что происходит с машиной, даже если не стоите рядом.</p>
+        <ol class="steps">
+          <li class="reveal"><h3>Запись на время</h3><p>Приезжаете к назначенному часу, машину сразу забирают в работу.</p></li>
+          <li class="reveal" style="--d:70ms"><h3>Салон под защитой</h3><p>Руль обматываем плёнкой, на сиденья стелим чехлы. До того, как мастер сел за руль.</p></li>
+          <li class="reveal"><h3>Сначала причина</h3><p>Не меняем всё подряд. Ищем, в чём дело, объясняем и согласуем смету до начала работ.</p></li>
+          <li class="reveal" style="--d:70ms"><h3>Фото и видео</h3><p>Снимаем, что сняли и что поставили, и присылаем в WhatsApp по ходу ремонта.</p></li>
+          <li class="reveal"><h3>Старые детали ваши</h3><p>Показываем снятые запчасти и фильтры. Хотите — забирайте с собой.</p></li>
+          <li class="reveal" style="--d:70ms"><h3>Звонок на следующий день</h3><p>Спрашиваем, всё ли в порядке после ремонта и есть ли замечания.</p></li>
+        </ol>
+      </div>
+      <figure class="process-figure reveal zoom" style="--d:120ms">
+        <div class="disc"><img src="img/engine.jpg" alt="Руки мастера с инструментом под капотом автомобиля" width="935" height="1400" loading="lazy"></div>
+        <figcaption>Так выглядит работа, которую вы увидите в отчёте: крупно и по шагам.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section id="services" class="wrap services" aria-labelledby="services-title">
+    <figure class="services-figure reveal zoom">
+      <div class="disc"><img src="img/lift.jpg" alt="Подъёмник в автосервисе, на заднем плане красная машина с открытым капотом" width="934" height="1400" loading="lazy"></div>
+      <figcaption>Подъёмник в мастерской</figcaption>
+    </figure>
+    <div>
+      <h2 id="services-title" class="reveal">Что ремонтируем</h2>
+      <ul class="svc">
+        <li class="reveal"><h3>Двигатель</h3><p>Бензиновые моторы: от диагностики до замены цепи ГРМ и чистки форсунок.</p></li>
+        <li class="reveal"><h3>Ходовая</h3><p>Пневмоподвеска, стойки, сайлентблоки и всё, что стучит на кочках.</p></li>
+        <li class="reveal"><h3>Тормоза</h3><p>Колодки, диски, проточка тормозных дисков.</p></li>
+        <li class="reveal"><h3>Диагностика</h3><p>Компьютерная проверка всех блоков. Объясняем ошибки простыми словами.</p></li>
+        <li class="reveal"><h3>Масло и ТО</h3><p>Замена масла и фильтров, плановое обслуживание.</p></li>
+        <li class="reveal"><h3>Охлаждение</h3><p>Чистка радиаторов и промывка системы охлаждения.</p></li>
+      </ul>
+      <p class="after reveal">Оплата картой, наличными, по QR или через банк. Пока машина в работе, можно подождать в кафе рядом.</p>
+    </div>
+  </section>
+
+  <section class="brands" aria-labelledby="brands-title">
+    <div class="wrap">
+      <div class="brands-head">
+        <h2 id="brands-title" class="reveal">Любая марка</h2>
+        <p class="reveal" style="--d:80ms">От Lada и УАЗ до Porsche и Bentley. Не нашли свою — напишите, скорее всего, тоже берём.</p>
+      </div>
+      <ul class="brand-list reveal" style="--d:120ms" aria-label="Марки, которые обслуживаем">
+        <li>Toyota</li><li>Lexus</li><li>Hyundai</li><li>Kia</li><li>Mercedes-Benz</li><li>Volkswagen</li><li>Audi</li><li>Nissan</li><li>Mitsubishi</li><li>Mazda</li><li>Honda</li><li>Infiniti</li><li>Chevrolet</li><li>Daewoo</li><li>Ravon</li><li>Lada</li><li>Skoda</li><li>SsangYong</li><li>Suzuki</li><li>Renault</li><li>Peugeot</li><li>Citroen</li><li>Opel</li><li>Ford</li><li>Volvo</li><li>Porsche</li><li>Bentley</li><li>Jaguar</li><li>Cadillac</li><li>Lincoln</li><li>Jeep</li><li>Dodge</li><li>Chrysler</li><li>GMC</li><li>Acura</li><li>SEAT</li><li>Smart</li><li>ГАЗ</li><li>УАЗ</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="reviews" class="wrap reviews" aria-labelledby="reviews-title">
+    <div class="score reveal" role="img" aria-label="Рейтинг 4,9 из 5 в 2ГИС">
+      <strong>4,9</strong>
+      <span>274 оценки в 2ГИС</span>
+    </div>
+    <div>
+      <h2 id="reviews-title" class="reveal">Что пишут в 2ГИС</h2>
+      <blockquote class="reveal" style="--d:80ms">
+        <p class="quote-main">«Первые ребята, которые не отмахнулись и не сказали выкинуть движок, а решили разобраться в проблеме.»</p>
+        <cite>Centr, Hyundai i40 2014</cite>
+      </blockquote>
+      <div class="quotes">
+        <blockquote class="reveal">
+          <p>«…мастера не начинают сразу менять всё подряд, а сначала нормально разбираются в проблеме и объясняют, в чём причина.»</p>
+          <cite>Torero V.</cite>
+        </blockquote>
+        <blockquote class="reveal" style="--d:80ms">
+          <p>«Пришла забирать — мне все б/у фильтра показали, в каком были состоянии.»</p>
+          <cite>Ирина С.</cite>
+        </blockquote>
+        <blockquote class="reveal">
+          <p>«Весь процесс ремонта, была фото и видео фиксация. Отдельное спасибо мастеру Арслану!»</p>
+          <cite>Гуля Б.</cite>
+        </blockquote>
+      </div>
+      <a class="btn btn-quiet src reveal" href="https://2gis.kz/almaty/firm/70000001035168787/tab/reviews" target="_blank" rel="noopener">Все отзывы в 2ГИС</a>
+    </div>
+  </section>
+
+  <section id="contacts" class="contacts on-paper" aria-labelledby="contacts-title">
+    <div class="wrap contacts-grid">
+      <div>
+        <h2 id="contacts-title" class="reveal">Как доехать</h2>
+        <p class="address reveal" style="--d:80ms">Улица Орджоникидзе, 158/22, Турксибский район</p>
+        <p class="landmark reveal" style="--d:140ms">Вход с улицы Хмельницкого, 22, первый этаж. Остановка «Гёте» в 150 метрах, рядом три парковки.</p>
+        <dl class="reveal" style="--d:180ms">
+          <div><dt>Телефон и WhatsApp</dt><dd><a href="tel:+77029062237">+7 702 906 22 37</a></dd></div>
+          <div><dt>Второй номер</dt><dd><a href="tel:+77052222871">+7 705 222 28 71</a></dd></div>
+          <div><dt>Часы работы</dt><dd>С 09:00, по записи</dd></div>
+          <div><dt>Instagram</dt><dd><a href="https://instagram.com/autoservice_restart" target="_blank" rel="noopener">@autoservice_restart</a></dd></div>
+        </dl>
+        <div class="contact-actions reveal" style="--d:220ms">
+          <a class="btn btn-dark" href="https://2gis.kz/almaty/firm/70000001035168787" target="_blank" rel="noopener">Маршрут в 2ГИС</a>
+          <a class="btn btn-quiet" href="#booking">Записаться</a>
+        </div>
+      </div>
+      <figure class="contacts-figure reveal zoom" style="--d:120ms">
+        <div class="disc"><img src="img/workshop.jpg" alt="Мастерская: машина с открытым капотом на посту" width="1024" height="684" loading="lazy"></div>
+        <figcaption>Машина на посту в ожидании мастера</figcaption>
+      </figure>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p class="footer-name" aria-hidden="true"><i></i>PushStart</p>
+    <div class="footer-row">
+      <p>Демо-макет сайта для автосервиса PushStart. Адрес, телефоны, услуги, марки и отзывы взяты из открытой карточки в 2ГИС. Сделано в <a href="https://clockwork-yr.github.io/" target="_blank" rel="noopener">Clockwork</a>.</p>
+      <p>Фото: «Toyota HiLux Engine Start-Stop Button», Johntorcasio, CC BY-SA 4.0, Wikimedia Commons; «Car mechanic working on an old engine under hood» и «Close-up of car lift controls», Ivan Radic, CC BY 2.0, Flickr; «Old car raised on car lift for diagnostics in workshop», Shixart1985, CC BY 2.0, Wikimedia Commons.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="mobile-bar">
+  <a class="btn btn-accent" href="#booking">Записаться</a>
+  <a class="btn btn-quiet" href="tel:+77029062237">Позвонить</a>
+</div>
+
+<script>
+document.documentElement.classList.add('js');
+(function(){
+  var form = document.getElementById('order-form');
+  var preview = document.getElementById('preview-text');
+  var hidden = document.getElementById('wa-text');
+  var start = document.getElementById('start');
+  function val(name){ var el = form.querySelector('input[name="'+name+'"]:checked'); return el ? el.value : ''; }
+  function build(){
+    var car = [val('brand'), form.model.value.trim()].filter(Boolean).join(' ');
+    var works = Array.prototype.map.call(form.querySelectorAll('input[name="work"]:checked'), function(i){return i.value;});
+    var lines = ['Здравствуйте! Хочу записаться в PushStart.'];
+    lines.push('Машина: ' + (car || 'напишу в ответе') + '.');
+    if (works.length) lines.push('Что сделать: ' + works.join(', ') + '.');
+    lines.push('Когда удобно: ' + [val('day'), val('time')].filter(Boolean).join(', ') + '.');
+    preview.textContent = lines.join('\n');
+    hidden.value = lines.join('\n');
+    start.classList.add('pulse');
+  }
+  form.addEventListener('input', build);
+  form.addEventListener('change', build);
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    build();
+    start.classList.add('pressed');
+    setTimeout(function(){ start.classList.remove('pressed'); }, 220);
+    window.open('https://wa.me/77029062237?text=' + encodeURIComponent(hidden.value), '_blank', 'noopener');
+  });
+  build();
+  start.classList.remove('pulse');
+
+  var items = document.querySelectorAll('.reveal, .hero-disc');
+  if (!('IntersectionObserver' in window)) { items.forEach(function(el){el.classList.add('in');}); return; }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, {rootMargin:'0px 0px -8% 0px'});
+  items.forEach(function(el){ io.observe(el); });
+  requestAnimationFrame(function(){ document.querySelector('.hero-disc').classList.add('in'); });
+})();
+</script>
+</body>
+</html>
